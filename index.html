@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guia Fácil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topo">
+    <strong>Guia Fácil</strong>
+    <a href="#">sobre</a>
+    <a href="#">suporte</a>
+  </header>
+
+  <div class="ferramentas">
+    <button id="btn-contraste" aria-label="Modo escuro">◐</button>
+    <button id="btn-aumentar" aria-label="Aumentar letra">+</button>
+    <button id="btn-diminuir" aria-label="Diminuir letra">−</button>
+  </div>
+
+  <main>
+
+    <section id="tela-home" class="tela ativa">
+      <h1>Com o que você quer ajuda hoje?</h1>
+      <div id="categorias" class="categorias"></div>
+      <ul id="perguntas" class="perguntas"></ul>
+    </section>
+
+    <section id="tela-chat" class="tela">
+      <button id="btn-voltar" class="voltar">← Voltar ao início</button>
+      <div id="conversa"></div>
+    </section>
+
+  </main>
+
+  <div class="barra">
+    <input id="busca" type="text" placeholder="Digite aqui" aria-label="Digite aqui">
+<!-- aria label é p leitor -->
+    <button id="btn-buscar" aria-label="Buscar">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+    </button>
+
+    <button class="mic" aria-label="Microfone">
+      <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
