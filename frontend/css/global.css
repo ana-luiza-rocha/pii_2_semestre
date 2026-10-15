@@ -1,0 +1,32 @@
+/* cores p nao esquecer//azul escuro: #1565c0 azul claro: #90caf9 fundo azul: #e3f2fd verde: #4db6ac amarelo: #ffd166 */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 17px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #4db6ac;
+  outline-offset: 2px;
+}
