@@ -1,0 +1,23 @@
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #1565c0;
+  color: white;
+}
+
+.topo strong {
+  margin-right: auto;
+  font-size: 1.1em;
+}
+
+.topo a {
+  color: white;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+.topo a:hover {
+  text-decoration: underline;
+}
