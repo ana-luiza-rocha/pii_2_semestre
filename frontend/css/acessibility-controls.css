@@ -1,0 +1,15 @@
+.ferramentas {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 10px 16px 0;
+}
+
+.ferramentas button {
+  width: 38px;
+  height: 38px;
+  border: 2px solid #90caf9;
+  border-radius: 10px;
+  background: #e3f2fd;
+  font-weight: bold;
+}
