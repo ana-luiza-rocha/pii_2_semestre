@@ -1,0 +1,279 @@
+/* título grande da tela inicial */
+h1 {
+  margin: 48px 0 56px;
+  color: #1565c0;
+  font-size: 2.9em;
+  line-height: 1.1;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* frase pequena em cima dos cartões */
+.subtitulo {
+  margin: 0 0 14px;
+  color: #355a78;
+  font-size: 0.95em;
+  text-align: center;
+}
+
+/* caixa que junta os cartões, um embaixo do outro */
+.servicos {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* cartão de cada serviço (atende+ e meu inss) */
+.cartao {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 22px;
+  border-radius: 24px;
+  background: #90caf9;
+  box-shadow: 0 6px 14px rgba(21, 101, 192, 0.2);
+  color: #0d2b45;
+  text-decoration: none;
+}
+
+/* texto do cartão ocupa o espaço do meio empurrando a seta para a direita */
+.cartao .texto {
+  flex: 1;
+}
+
+/* nome do serviço em cima */
+.cartao strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 1.25em;
+}
+
+/* passar o mouse por cima o cartao fica azul escuro */
+.cartao:hover,
+.cartao:active {
+  background: #0d47a1;
+  color: white;
+}
+
+/* a seta fica branca quando o cartão escurece */
+.cartao:hover .seta,
+.cartao:active .seta {
+  stroke: white;
+}
+
+/* botão com borda "sugestões e reclamações", no fim da tela inicial */
+.sugestoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 12px;
+  border: 2px solid #1565c0;
+  border-radius: 999px;
+  color: #1565c0;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ícone dentro do botão de sugestões */
+.sugestoes svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #1565c0;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* passar o mouse deixa o botao azul claro */
+.sugestoes:hover {
+  background: #90caf9;
+}
+
+/* todo bloco de conversa fica escondido por padrão */
+.bloco {
+  display: none;
+}
+
+/* mostra o bloco que o link apontou (ex: conversa.html#atende) */
+.bloco:target {
+  display: block;
+}
+
+/* se abrir a página sem apontar para nenhum, mostra o bloco "padrao" */
+.tela:not(:has(:target)) .bloco.padrao {
+  display: block;
+}
+
+/* etiqueta pequena em cima da conversa */
+.etiqueta {
+  margin: 0 0 16px;
+  color: #1565c0;
+  font-size: 0.8em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* balão com a pergunta */
+.balao {
+  margin-bottom: 24px;
+  padding: 18px;
+  border-radius: 20px 20px 20px 4px;
+  background: #90caf9;
+  color: #0d2b45;
+  line-height: 1.4;
+}
+
+/* opção amarela clara da conversa */
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 14px 18px;
+  border: 2px solid #f5dc8e;
+  border-radius: 999px;
+  background: #fff4cc;
+  box-shadow: 0 3px 8px rgba(120, 90, 0, 0.12);
+  color: #0d2b45;
+  text-decoration: none;
+}
+
+.opcao .texto {
+  flex: 1;
+}
+
+/* botão de voltar com a borda tracejada */
+.opcao.voltar {
+  border-style: dashed;
+  cursor: pointer;
+}
+
+/* círculo do ícone dentro da opção, menor que o dos cartoes da tela inicial */
+.opcao .icone {
+  width: 36px;
+  height: 36px;
+  background: white;
+}
+/* desenho do icone dentro das opções */
+.opcao .icone svg {
+  width: 20px;
+  height: 20px;
+}
+
+.bloco:has(.modal:target) {
+  display: block;
+}
+
+/* caixa onde a pessoa escreve a sugestão, reclamação ou elogio */
+.caixa-texto {
+  display: block;
+  width: 100%;
+  min-height: 140px;
+  padding: 14px 16px;
+  border: 2px solid #90caf9;
+  border-radius: 16px;
+  background: white;
+  color: #0d2b45;
+  font: inherit;
+  resize: none;
+}
+
+/* texto "0 caracteres" embaixo da caixa */
+.contador {
+  margin: 6px 4px 22px;
+  color: #355a78;
+  font-size: 0.8em;
+  text-align: right;
+}
+
+/* botão grande amarelo (enviar, voltar e editar, sim enviar) */
+.botao {
+  display: block;
+  margin-bottom: 12px;
+  padding: 15px 18px;
+  border: 2px solid #f5dc8e;
+  border-radius: 999px;
+  background: #fff4cc;
+  box-shadow: 0 3px 8px rgba(120, 90, 0, 0.12);
+  color: #0d2b45;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* botão voltar e editar */
+.botao.secundario {
+  border-color: #0d47a1;
+  background: #fffaf0;
+  box-shadow: none;
+}
+
+/* janela de confirmação: fundo escuro que cobre a tela toda escondido por padrão */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(13, 43, 69, 0.55);
+}
+
+/* a janela aparece quando o link aponta para ela */
+.modal:target {
+  display: flex;
+}
+
+/* caixa branca que fica no meio da janela */
+.modal-caixa {
+  width: 100%;
+  max-width: 340px;
+  padding: 28px 22px 16px;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+/* círculo azul do ícone dentro da caixa branca */
+.modal-icone {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: #e3f2fd;
+}
+
+/* desenho do icone drentro desse circulo */
+.modal-icone svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: #1565c0;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* pergunta de confirmação "deseja enviar?" */
+.modal h2 {
+  margin: 0 0 10px;
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+/* o aviso embaixo da pergunta */
+.modal p {
+  margin: 0 0 20px;
+  color: #355a78;
+  font-size: 0.85em;
+  line-height: 1.4;
+}
