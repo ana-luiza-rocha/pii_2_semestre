@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guia Fácil - Conversa</title>
+  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="global.css">
+
+</head>
+<body>
+
+  <!-- cabeçalho (igual em todas as telas) -->
+  <header class="topo">
+    <strong>Guia Fácil</strong>
+    <!-- botoes do cabeçalho -->
+    <nav class="botoes">
+      <!-- botao que diminui letra -->
+      <button type="button" aria-label="Diminuir letra">
+        <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M17 9h5"/></svg>
+      </button>
+      <!-- botao que aumenta letra -->
+      <button type="button" aria-label="Aumentar letra">
+        <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M19.5 6.5v5M17 9h5"/></svg>
+      </button>
+      <!-- botao do modo escuro -->
+      <button type="button" aria-label="Modo escuro">
+        <svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>
+      </button>
+      <!-- botao que leva a tela inicial -->
+      <a href="index.html" aria-label="Início">
+        <svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4zM10 20v-6h4v6"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- tela conversa -->
+  <main class="tela">
+
+    <!-- chat do meu inss, aparece quando o endereço termina em: conversa.html#meu-inss -->
+    <div class="bloco padrao" id="meu-inss">
+
+      <!-- mostra em qual serviço a pessoa está -->
+      <p class="etiqueta">Conversa · Meu INSS</p>
+      <div class="balao">Olá! O que você deseja fazer no Meu INSS hoje?</div>
+
+      <!-- primeira opção -->
+      <div class="opcao">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"/><path d="M3 20c0-4 3-6 7-6M18 14v6M15 17h6"/></svg>
+        </span>
+        <span class="texto">Criar uma conta</span>
+      </div>
+
+      <!-- segunda opção -->
+      <div class="opcao">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><circle cx="12" cy="14" r="2.5"/><path d="M14 16l2 2"/></svg>
+        </span>
+        <span class="texto">Consultar um benefício</span>
+      </div>
+
+      <!-- opção de voltar para a pergunta (nesse caso ainda nao tem a pergunta anterior) -->
+      <a href="index.html" class="opcao voltar">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </span>
+        <span class="texto">Voltar à pergunta anterior</span>
+      </a>
+    </div>
+
+    <!-- chat do atende+, aparece quando o endereço termina em: conversa.html#atende -->
+    <div class="bloco" id="atende">
+
+      <!-- mostra qual serviço a pessoa está -->
+      <p class="etiqueta">Conversa · Atende+</p>
+      <div class="balao">Olá! O que você deseja fazer no Atende+ hoje?</div>
+
+      <!-- primeira opção -->
+      <div class="opcao">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M12 13v4M10 15h4"/></svg>
+        </span>
+        <span class="texto">Criar uma conta</span>
+      </div>
+
+      <!-- segunda opção -->
+      <div class="opcao">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/><circle cx="12" cy="15" r="2"/><path d="M14 17l2 2"/></svg>
+        </span>
+        <span class="texto">Obter ficha médica</span>
+      </div>
+
+      <!-- voltar para pergunta anterior -->
+      <a href="index.html" class="opcao voltar">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </span>
+        <span class="texto">Voltar à pergunta anterior</span>
+      </a>
+    </div>
+
+  </main>
+</body>
+</html>
