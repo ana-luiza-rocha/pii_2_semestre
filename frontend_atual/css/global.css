@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+/* configurações gerais da página inteira */
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: #e3f2fd;
+  color: #0d2b45;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 17px;
+}
+
+/* coisas do cabeçalho: */
+
+/* cabeçalho azul no topo, ocupa a largura toda da tela */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 24px;
+  background: #1565c0;
+  color: white;
+}
+
+/* nome guia fácil no cabeçalho */
+.topo strong {
+  font-size: 25px;
+}
+
+/* grupo dos botões redondos, com espaço entre eles */
+.botoes {
+  display: flex;
+  gap: 10px;
+}
+
+/* círculo branco de cada botão do cabeçalho */
+.botoes button,
+.botoes a {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+/* qnd passa o mouse, o círculo fica azul claro */
+.botoes button:hover,
+.botoes a:hover {
+  background: #90caf9;
+}
+
+/* ícone dentro dos botões do cabeçalho */
+.botoes svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #0d47a1;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* fim do cabeçalho */
+
+
+/* área do conteúdo do inicio, estreita e centralizada */
+.tela {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}
+
+/* círculo branco que fica atrás dos ícones dos cartões e das opções lá dentro de conversa*/
+.icone {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* ícone dentro do círculo */
+.icone svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: #1565c0;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* seta para a direita dos cartões e das opções */
+.seta {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #1565c0;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
