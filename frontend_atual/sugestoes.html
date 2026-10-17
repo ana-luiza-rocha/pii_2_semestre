@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guia Fácil - Sugestões e reclamações</title>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- cabeçalho (igual em todas as telas) -->
+  <header class="topo">
+    <strong>Guia Fácil</strong>
+    <!-- botoes do cabeçalho -->
+    <nav class="botoes">
+      <!-- botao que diminui letra -->
+      <button type="button" aria-label="Diminuir letra">
+        <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M17 9h5"/></svg>
+      </button>
+      <!-- botao que aumenta letra -->
+      <button type="button" aria-label="Aumentar letra">
+        <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M19.5 6.5v5M17 9h5"/></svg>
+      </button>
+      <!-- botao do modo escuro -->
+      <button type="button" aria-label="Modo escuro">
+        <svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>
+      </button>
+      <!-- botao que leva a tela inicial -->
+      <a href="index.html" aria-label="Início">
+        <svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4zM10 20v-6h4v6"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- tela de sugestões -->
+  <main class="tela">
+
+    <!-- menu com as 3 opções -->
+    <div class="bloco padrao" id="menu">
+      <div class="balao">O que você gostaria de fazer?</div>
+
+      <!-- opção de sugestão, leva ao formulario de sugestão -->
+      <a href="#sugestao" class="opcao clicavel">
+
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></svg>
+        </span>
+
+        <span class="texto">Enviar uma sugestão</span>
+
+        <!-- seta p direita -->
+        <svg class="seta" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- opção de reclamação, leva ao formulário de reclamação -->
+      <a href="#reclamacao" class="opcao clicavel">
+
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.01"/></svg>
+        </span>
+
+        <span class="texto">Fazer uma reclamação</span>
+
+        <!-- seta p direita -->
+        <svg class="seta" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- opção de elogio, leva ao formulário de elogio -->
+      <a href="#elogio" class="opcao clicavel">
+
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.5A4 4 0 0119 10c0 5.5-7 10-7 10z"/></svg>
+        </span>
+
+        <span class="texto">Enviar um elogio</span>
+
+        <!-- seta p direita -->
+        <svg class="seta" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- opção de voltar, leva a tela inicial -->
+      <a href="index.html" class="opcao clicavel voltar">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </span>
+        <span class="texto">Voltar à pergunta anterior</span>
+      </a>
+    </div>
+
+    <!-- formulario: sugestoes.html#sugestao -->
+    <div class="bloco" id="sugestao">
+      <div class="balao">Conte para a gente o que você acha que pode melhorar no Guia Fácil.</div>
+
+      <textarea class="caixa-texto" placeholder="Escreva sua sugestão aqui..." aria-label="Escreva sua sugestão aqui..."></textarea>
+      <!-- contador de caracteres, mudar em js -->
+      <p class="contador">0 caracteres</p>
+
+      <!-- botao de voltar -->
+      <a href="#menu" class="opcao clicavel voltar">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </span>
+        <span class="texto">Voltar à pergunta anterior</span>
+      </a>
+      <!-- botao de enviar, abre a janela de confirmação -->
+      <a href="#sugestao-confirmar" class="botao">Enviar</a>
+
+      <!-- janela de confirmação (aparece ao clicar em enviar) -->
+      <div class="modal" id="sugestao-confirmar">
+        <div class="modal-caixa">
+          <div class="modal-icone">
+            <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></svg>
+          </div>
+          <h2>Deseja enviar esta sugestão?</h2>
+          <p>Você poderá voltar e alterar o texto antes de enviar.</p>
+          <!-- botao para voltar e editar -->
+          <a href="#sugestao" class="botao secundario">Voltar e editar</a>
+          <!-- aqui o backend vai receber o texto, agora so volta p inicio -->
+          <a href="index.html" class="botao">Sim, enviar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- formulario: sugestoes.html#reclamacao -->
+    <div class="bloco" id="reclamacao">
+      <div class="balao">Conte para a gente o que não funcionou como você esperava.</div>
+      <textarea class="caixa-texto" placeholder="Escreva sua reclamação aqui..." aria-label="Escreva sua reclamação aqui..."></textarea>
+      <!-- contador, mudar no js -->
+      <p class="contador">0 caracteres</p>
+      <!-- botao de voltar ao menu -->
+      <a href="#menu" class="opcao clicavel voltar">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </span>
+        <span class="texto">Voltar à pergunta anterior</span>
+      </a>
+
+      <!-- botao enviar, abre a janela de confirmação -->
+      <a href="#reclamacao-confirmar" class="botao">Enviar</a>
+
+      <!-- janela de confirmação (aparece ao clicar em enviar) -->
+      <div class="modal" id="reclamacao-confirmar">
+        <div class="modal-caixa">
+          <div class="modal-icone">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.01"/></svg>
+          </div>
+          <h2>Deseja enviar esta reclamação?</h2>
+          <p>Você poderá voltar e alterar o texto antes de enviar.</p>
+          <!-- botao para voltar e editar -->
+          <a href="#reclamacao" class="botao secundario">Voltar e editar</a>
+          <!-- aqui o backend vai receber o texto, agora so volta p inicio -->
+          <a href="index.html" class="botao">Sim, enviar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- formulario: sugestoes.html#elogio -->
+    <div class="bloco" id="elogio">
+      <div class="balao">Conte para a gente o que você gostou no Guia Fácil.</div>
+      <textarea class="caixa-texto" placeholder="Escreva seu elogio aqui..." aria-label="Escreva seu elogio aqui..."></textarea>
+      <!-- contador, mudar no js -->
+      <p class="contador">0 caracteres</p>
+
+      <!-- botao de voltar ao menu -->
+      <a href="#menu" class="opcao clicavel voltar">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </span>
+        <span class="texto">Voltar à pergunta anterior</span>
+      </a>
+
+      <!-- botao enviar, abre a janela de confirmação -->
+      <a href="#elogio-confirmar" class="botao">Enviar</a>
+
+      <!-- janela de confirmação (aparece ao clicar em enviar) -->
+      <div class="modal" id="elogio-confirmar">
+        <div class="modal-caixa">
+          <div class="modal-icone">
+            <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.5A4 4 0 0119 10c0 5.5-7 10-7 10z"/></svg>
+          </div>
+          <h2>Deseja enviar este elogio?</h2>
+          <p>Você poderá voltar e alterar o texto antes de enviar.</p>
+          <!-- botao para voltar e editar -->
+          <a href="#elogio" class="botao secundario">Voltar e editar</a>
+          <!-- aqui o backend vai receber o texto, agora so volta p inicio -->
+          <a href="index.html" class="botao">Sim, enviar</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
