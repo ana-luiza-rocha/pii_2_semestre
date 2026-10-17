@@ -1,5 +1,7 @@
+# ============================================== #
 # ESTE CÓDIGO SERVE PARA CARREGAR E VALIDAR /
 # A CONFIGURAÇÃO DO BANCO E SUAS CREDENCIAIS.
+# ============================================== #
 
 import os
 from pathlib import Path
@@ -8,7 +10,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Pega o caminho do arquivo atual, torna ele absoluto e vai até o root do projeto
-PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 load_dotenv(PROJECT_ROOT / ".env")
 
 MONGO_HOST = os.getenv("MONGO_HOST", "localhost")
