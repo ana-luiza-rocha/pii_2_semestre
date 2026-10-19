@@ -4,7 +4,7 @@ atende_mais_options = {
 
     "code": "AM_1",
     "service_name": "Atende+",
-    "message": "Olá! O que você deseja fazer no Atende+ hoje?",
+    "message": "O que você deseja fazer no Atende+ hoje?",
     "options": [
 
         {

@@ -14,7 +14,7 @@ meu_inss_options = {
 
         {
             "text": "Consultar um benefício",
-            "next step": ""
+            "next step": "" #o fluxo de benefício não existe ainda!
         }, 
 
         {

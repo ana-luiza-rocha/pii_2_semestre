@@ -109,7 +109,7 @@ account_creation_steps = [
 
             {
                 "text": "Consultar um benefício",
-                "next step": ""
+                "next step": "" #o fluxo de benefício não existe ainda!
             }, 
 
             {
@@ -130,7 +130,7 @@ account_creation_steps = [
 
             {
                 "text": "Sim",
-                "next step": "" #menu
+                "next step": "MI_CC_19"
             }, 
 
             {
@@ -391,6 +391,36 @@ account_creation_steps = [
                 "text": "Voltar para a tela inicial",
                 "next step": "MENU"
             },
+
+        ]
+
+    },
+
+    {
+
+        "code": "MI_CC_19",
+        "service_name": "Meu INSS",
+        "message": "Com qual serviço você gostaria de ajuda?",
+        "options": [
+
+            {
+                "text": "Atende+",
+                "next step": "AM_1"
+            }, 
+
+            {
+                "text": "Meu INSS",
+                "next step": "MI_1"
+            }, 
+
+            {
+                "text": "Voltar à pergunta anterior",
+            },
+
+            {
+                "text": "Voltar para a tela inicial",
+                "next step": "MENU"
+            }
 
         ]
 
