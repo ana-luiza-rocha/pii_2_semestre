@@ -27,4 +27,4 @@ atende_mais_options = {
 
 }
 
-insert_atende_mais_options = step.insert_many(atende_mais_options)
+insert_atende_mais_options = step.insert_one(atende_mais_options)

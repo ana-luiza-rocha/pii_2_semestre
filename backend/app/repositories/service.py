@@ -21,4 +21,4 @@ feedback = {
     "initial_step": "FB_01"
 }
 
-insert_services = service.insert_many(atende_mais, meu_inss, feedback)
+insert_services = service.insert_many([atende_mais, meu_inss, feedback])

@@ -27,4 +27,4 @@ meu_inss_options = {
 
 }
 
-insert_meu_inss_options = step.insert_many(meu_inss_options)
+insert_meu_inss_options = step.insert_one(meu_inss_options)
