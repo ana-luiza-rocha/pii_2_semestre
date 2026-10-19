@@ -9,7 +9,7 @@ services_options = {
 
         {
             "text": "Criar uma conta",
-            "next step": ""
+            "next step": "MI_CC_01"
         }, 
 
         {
