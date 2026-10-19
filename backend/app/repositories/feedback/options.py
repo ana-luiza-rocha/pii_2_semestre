@@ -1,5 +1,5 @@
-from database import db
-from collections import step
+from app.database.database import db
+from app.repositories.collections import step
 
 feedback_options = {
 
@@ -32,3 +32,4 @@ feedback_options = {
 
 }
 
+insert_feedback_options = step.insert_many(feedback_options)

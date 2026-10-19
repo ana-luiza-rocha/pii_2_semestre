@@ -1,5 +1,5 @@
-from database import db
-from collections import step
+from app.database.database import db
+from app.repositories.collections import step
 
 complaint_steps = [
 
@@ -54,3 +54,4 @@ complaint_steps = [
 
 ]
 
+insert_complaint_steps = step.insert_many(complaint_steps)

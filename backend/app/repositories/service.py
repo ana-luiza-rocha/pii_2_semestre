@@ -1,5 +1,5 @@
-from database import db
-from collections import service
+from app.database.database import db
+from app.repositories.collections import service
 
 atende_mais = {
     "code": "atende+",
@@ -21,4 +21,4 @@ feedback = {
     "initial_step": "FB_01"
 }
 
-inserir = service.insert_many(atende_mais, meu_inss, feedback)
+insert_services = service.insert_many(atende_mais, meu_inss, feedback)

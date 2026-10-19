@@ -1,5 +1,5 @@
-from database import db
-from collections import step
+from app.database.database import db
+from app.repositories.collections import step
 
 atende_mais_options = {
 
@@ -26,3 +26,5 @@ atende_mais_options = {
     ]
 
 }
+
+insert_atende_mais_options = step.insert_many(atende_mais_options)
