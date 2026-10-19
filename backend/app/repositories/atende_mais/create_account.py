@@ -87,7 +87,7 @@ create_account_steps = [
 
             {
                 "text": "Avaliar tutorial",
-                "next step": "" # AVALIACAO
+                "next step": "AM_CC_07"
             }, 
 
             {
@@ -140,7 +140,62 @@ create_account_steps = [
         "message": "A Ficha de Avaliação Médica é um documento preenchido pelo médico com informações sobre sua condição de saúde e suas necessidades para usar o Atende+.",
         "next step": "AM_CC_05"
 
-    }
+    },
+
+    {
+
+        "code": "AM_CC_07",
+        "service_name": "Atende+",
+        "message": "Qual nota você daria para este tutorial?",
+        "options": [
+
+            {
+                "text": "Enviar",
+                "next step": "AM_CC_08"
+            }, 
+
+            {
+                "text": "Voltar à pergunta anterior",
+            }, 
+
+            {
+                "text": "Voltar para a tela inicial",
+                "next step": "MENU"
+            },
+
+        ]
+
+    },
+
+    {
+
+        "code": "AM_CC_08",
+        "service_name": "Atende+",
+        "message": "Avaliação enviada com sucesso!",
+        "next step": "AM_CC_09"
+
+    },
+
     
+    {
+
+        "code": "AM_CC_09",
+        "service_name": "Atende+",
+        "message": "Obrigado por ajudar a melhorar o Guia Fácil",
+        "options": [
+
+            {
+                "text": "Voltar à pergunta anterior",
+            }, 
+
+            {
+                "text": "Voltar para a tela inicial",
+                "next step": "MENU"
+            },
+
+        ]
+
+    }
+
 ]
 

@@ -100,8 +100,63 @@ get_medical_forms_steps = [
 
             {
                 "text": "Avaliar tutorial",
-                "next step": "" # AVALIACAO
+                "next step": "AM_OFM_07" 
             }, 
+
+            {
+                "text": "Voltar à pergunta anterior",
+            }, 
+
+            {
+                "text": "Voltar para a tela inicial",
+                "next step": "MENU"
+            },
+
+        ]
+
+    },
+
+    {
+
+        "code": "AM_OFM_07",
+        "service_name": "Atende+",
+        "message": "Qual nota você daria para este tutorial?",
+        "options": [
+
+            {
+                "text": "Enviar",
+                "next step": "AM_OFM_08"
+            }, 
+
+            {
+                "text": "Voltar à pergunta anterior",
+            }, 
+
+            {
+                "text": "Voltar para a tela inicial",
+                "next step": "MENU"
+            },
+
+        ]
+
+    },
+
+    {
+
+        "code": "AM_OFM_08",
+        "service_name": "Atende+",
+        "message": "Avaliação enviada com sucesso!",
+        "next step": "AM_OFM_09"
+
+    },
+
+    
+    {
+
+        "code": "AM_OFM_09",
+        "service_name": "Atende+",
+        "message": "Obrigado por ajudar a melhorar o Guia Fácil",
+        "options": [
 
             {
                 "text": "Voltar à pergunta anterior",
