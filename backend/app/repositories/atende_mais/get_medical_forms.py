@@ -70,7 +70,7 @@ get_medical_forms_steps = [
 
             {
                 "text": "Sim",
-                "next step": "" #OPCAO MENU
+                "next step": "AM_OFM_10"
             }, 
 
             {
@@ -166,6 +166,36 @@ get_medical_forms_steps = [
                 "text": "Voltar para a tela inicial",
                 "next step": "MENU"
             },
+
+        ]
+
+    },
+
+    {
+
+        "code": "AM_OFM_10",
+        "service_name": "Atende+",
+        "message": "Com qual serviço você gostaria de ajuda?",
+        "options": [
+
+            {
+                "text": "Atende+",
+                "next step": "AM_1"
+            }, 
+
+            {
+                "text": "Meu INSS",
+                "next step": "MI_1"
+            }, 
+
+            {
+                "text": "Voltar à pergunta anterior",
+            },
+
+            {
+                "text": "Voltar para a tela inicial",
+                "next step": "MENU"
+            }
 
         ]
 
