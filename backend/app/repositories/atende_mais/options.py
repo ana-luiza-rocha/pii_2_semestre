@@ -18,10 +18,6 @@ atende_mais_options = {
             "next step": "AM_OFM_01"
         }, 
 
-        {
-            "text": "Voltar para a tela inicial",
-            "next step": "MENU"
-        },
 
     ]
 

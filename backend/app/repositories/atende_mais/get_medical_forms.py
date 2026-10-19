@@ -33,10 +33,6 @@ get_medical_forms_steps = [
                 "text": "Voltar à pergunta anterior",
             },
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
         ]
 
@@ -81,10 +77,6 @@ get_medical_forms_steps = [
                 "text": "Voltar à pergunta anterior",
             },
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            }
 
         ]
 
@@ -106,10 +98,6 @@ get_medical_forms_steps = [
                 "text": "Voltar à pergunta anterior",
             }, 
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
         ]
 
@@ -131,10 +119,6 @@ get_medical_forms_steps = [
                 "text": "Voltar à pergunta anterior",
             }, 
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
         ]
 
@@ -161,10 +145,6 @@ get_medical_forms_steps = [
                 "text": "Voltar à pergunta anterior",
             }, 
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
         ]
 
@@ -191,10 +171,6 @@ get_medical_forms_steps = [
                 "text": "Voltar à pergunta anterior",
             },
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            }
 
         ]
 

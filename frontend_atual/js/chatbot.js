@@ -7,11 +7,12 @@ const score = document.getElementById("chatbot-score");
 const status = document.getElementById("chatbot-status");
 const retry = document.getElementById("chatbot-retry");
 
-let currentStep;
+let currentStep = null;
 let stepHistory = [];
 let drafts = {};
 let submissionId;
-let requestNumber = 0;
+let sendTarget;
+let loading = false;
 
 function createButton(text, action) {
   const button = document.createElement("button");
@@ -23,16 +24,24 @@ function createButton(text, action) {
   return button;
 }
 
-function setLoading(loading) {
-  form.inert = loading;
-  options.inert = loading;
-  options.setAttribute("aria-busy", String(loading));
+function setLoading(value) {
+  loading = value;
+  form.inert = value;
+  options.inert = value;
+  retry.disabled = value;
+  options.setAttribute("aria-busy", String(value));
+}
+
+function updateCounter() {
+  document.getElementById("chatbot-counter").textContent = comment.value.length + " / 2000 caracteres";
+  submissionId = Date.now() + "-" + Math.random();
 }
 
 function showStep() {
   message.textContent = currentStep.message;
   showMedia(currentStep);
   options.replaceChildren();
+  sendTarget = null;
 
   const isComment = currentStep.input_type === "comment";
   const isScore = currentStep.input_type === "score";
@@ -54,21 +63,26 @@ function showStep() {
     if (target === "MENU" || option.text.includes("pergunta anterior")) continue;
 
     if (option.text === "Enviar" && currentStep.input_type) {
+      sendTarget = target;
       const button = createButton("Enviar", null);
       button.type = "submit";
       button.setAttribute("form", "chatbot-form");
     } else if (target) {
-      createButton(option.text, () => loadStep(target));
+      createButton(option.text, function () {
+        loadStep(target);
+      });
     } else {
       createButton(option.text + " (em breve)", null).disabled = true;
     }
   }
 
   if (currentStep["next step"]) {
-    createButton("Continuar", () => loadStep(currentStep["next step"]));
+    createButton("Continuar", function () {
+      loadStep(currentStep["next step"]);
+    });
   }
   if (stepHistory.length > 1) {
-    createButton("Voltar à pergunta anterior", () => {
+    createButton("Voltar à pergunta anterior", function () {
       loadStep(stepHistory[stepHistory.length - 2], true);
     });
   }
@@ -76,46 +90,55 @@ function showStep() {
 }
 
 async function loadStep(code, goingBack = false) {
-  if (code === "MENU") {
-    window.location.href = "index.html";
-    return;
-  }
+  if (loading) return;
   if (currentStep) {
     drafts[currentStep.code] = { comment: comment.value, score: score.value };
   }
-  const request = ++requestNumber;
   setLoading(true);
   status.textContent = "Carregando...";
   retry.hidden = true;
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/steps/" + encodeURIComponent(code));
+    const response = await fetch("http://127.0.0.1:8000/steps/" + code);
     const step = await response.json();
-    if (!response.ok) throw new Error(step.detail || "Etapa não encontrada.");
-    if (request !== requestNumber) return;
+    if (!response.ok) throw new Error("Etapa não encontrada.");
 
-    if (goingBack) stepHistory.pop();
-    else stepHistory.push(step.code);
+    if (goingBack) {
+      stepHistory.pop();
+    } else {
+      stepHistory.push(step.code);
+    }
     currentStep = step;
     showStep();
     status.textContent = "";
   } catch (error) {
-    if (request !== requestNumber) return;
     status.textContent = "Não foi possível carregar a conversa. Confira a API e os dados do banco.";
     retry.hidden = false;
-    retry.onclick = () => loadStep(code, goingBack);
+    retry.onclick = function () {
+      loadStep(code, goingBack);
+    };
   } finally {
-    if (request === requestNumber) setLoading(false);
+    setLoading(false);
   }
 }
 
 async function sendAnswer(event) {
   event.preventDefault();
-  if (!form.reportValidity()) return;
-  const sendOption = currentStep.options.find(option => option.text === "Enviar");
-  if (!sendOption || !sendOption["next step"]) return;
+  if (loading || !form.reportValidity() || !sendTarget) return;
 
-  const request = requestNumber;
+  const answer = {
+    submission_id: submissionId,
+    step_code: currentStep.code,
+    comment: "",
+    score: null,
+    chat_history: stepHistory.slice(-200),
+  };
+  if (currentStep.input_type === "comment") {
+    answer.comment = comment.value;
+  } else {
+    answer.score = Number(score.value);
+  }
+
   setLoading(true);
   status.textContent = "Enviando...";
   retry.hidden = true;
@@ -123,49 +146,35 @@ async function sendAnswer(event) {
     const response = await fetch("http://127.0.0.1:8000/chatbot/answers", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        submission_id: submissionId,
-        step_code: currentStep.code,
-        comment: currentStep.input_type === "comment" ? comment.value : "",
-        score: currentStep.input_type === "score" ? Number(score.value) : null,
-        chat_history: stepHistory.slice(-200),
-      }),
+      body: JSON.stringify(answer),
     });
     if (!response.ok) throw new Error("Não foi possível enviar.");
-    if (request !== requestNumber) return;
     form.hidden = true;
     options.replaceChildren();
-    await loadStep(sendOption["next step"]);
+    setLoading(false);
+    await loadStep(sendTarget);
   } catch (error) {
-    if (request === requestNumber) {
-      status.textContent = "Não foi possível confirmar o envio. Sua resposta continua preenchida; tente novamente.";
-    }
+    status.textContent = "Não foi possível confirmar o envio. Sua resposta continua preenchida; tente novamente.";
   } finally {
-    if (request === requestNumber) setLoading(false);
+    setLoading(false);
   }
-}
-
-function updateCounter() {
-  document.getElementById("chatbot-counter").textContent = comment.value.length + " / 2000 caracteres";
-  submissionId = crypto.randomUUID();
 }
 
 function startConversation() {
   const firstSteps = {
-    atende: "AM_1", "meu-inss": "MI_01", feedback: "FB_01", menu: "FB_01",
-    sugestao: "FB_ES_01", reclamacao: "FB_FR_01", elogio: "FB_EE_01",
+    atende: "AM_1",
+    "meu-inss": "MI_01",
+    feedback: "FB_01",
+    menu: "FB_01",
+    sugestao: "FB_ES_01",
+    reclamacao: "FB_FR_01",
+    elogio: "FB_EE_01",
   };
   const service = window.location.hash.slice(1) || chat.dataset.service;
-  stepHistory = [];
-  drafts = {};
-  currentStep = null;
-  form.hidden = true;
-  options.replaceChildren();
   loadStep(firstSteps[service] || firstSteps[chat.dataset.service]);
 }
 
 form.onsubmit = sendAnswer;
 comment.oninput = updateCounter;
-score.onchange = () => { submissionId = crypto.randomUUID(); };
-window.addEventListener("hashchange", startConversation);
+score.onchange = updateCounter;
 startConversation();

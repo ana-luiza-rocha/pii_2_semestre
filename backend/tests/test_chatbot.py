@@ -61,6 +61,12 @@ class ChatbotTests(unittest.TestCase):
         self.assertTrue(upsert)
         self.answers.setdefault(query["_id"], copy.deepcopy(update["$setOnInsert"]))
 
+    def test_home_is_not_a_chatbot_option(self):
+        for step in self.steps.values():
+            for option in step.get("options", []):
+                self.assertNotEqual(option.get("next step"), "MENU")
+                self.assertNotIn(option["text"], ["Voltar para a tela inicial", "Voltar para a tela principal"])
+
     def test_all_destinations_exist(self):
         for step in self.steps.values():
             targets = [step.get("next step")]
@@ -114,6 +120,14 @@ class ChatbotTests(unittest.TestCase):
                 payload = {"submission_id": str(uuid4()), "step_code": code, "score": score}
                 self.assertEqual(self.client.post("/chatbot/answers", json=payload).status_code, 200)
                 self.assertEqual(self.answers[payload["submission_id"]]["score"], score)
+
+    def test_simple_submission_identifier(self):
+        payload = {"submission_id": "envio-teste-1", "step_code": "FB_ES_01", "comment": "Minha mensagem"}
+        self.assertEqual(self.client.post("/chatbot/answers", json=payload).status_code, 200)
+        self.assertEqual(self.client.post("/chatbot/answers", json=payload).status_code, 200)
+        self.assertEqual(len(self.answers), 1)
+        payload["submission_id"] = ""
+        self.assertEqual(self.client.post("/chatbot/answers", json=payload).status_code, 422)
 
     def test_invalid_answers_do_not_save(self):
         invalid = [

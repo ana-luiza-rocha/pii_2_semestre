@@ -23,10 +23,6 @@ feedback_options = {
             "next step": "FB_EE_01"
         }, 
 
-        {
-            "text": "Voltar para a tela inicial",
-            "next step": "MENU"
-        },
 
     ]
 

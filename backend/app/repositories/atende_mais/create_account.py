@@ -29,10 +29,6 @@ create_account_steps = [
                 "text": "Voltar à pergunta anterior",
             },
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
         ]
 
@@ -68,10 +64,6 @@ create_account_steps = [
                 "text": "Voltar à pergunta anterior",
             },
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
         ]
 
@@ -93,10 +85,6 @@ create_account_steps = [
                 "text": "Voltar à pergunta anterior",
             }, 
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
         ]
 
@@ -123,10 +111,6 @@ create_account_steps = [
                 "text": "Voltar à pergunta anterior",
             },
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            }
 
         ]
 
@@ -157,10 +141,6 @@ create_account_steps = [
                 "text": "Voltar à pergunta anterior",
             }, 
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
         ]
 
@@ -187,10 +167,6 @@ create_account_steps = [
                 "text": "Voltar à pergunta anterior",
             }, 
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
         ]
 
@@ -217,10 +193,6 @@ create_account_steps = [
                 "text": "Voltar à pergunta anterior",
             },
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            }
 
         ]
 
