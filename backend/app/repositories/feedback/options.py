@@ -32,4 +32,8 @@ feedback_options = {
 
 }
 
-insert_feedback_options = step.insert_one(feedback_options)
+step.update_one(
+    {"code": feedback_options["code"]},
+    {"$set": feedback_options},
+    upsert=True,
+)

@@ -202,4 +202,9 @@ get_medical_forms_steps = [
 
 ]
 
-insert_medical_forms_steps = step.insert_many(get_medical_forms_steps)
+for documento in get_medical_forms_steps:
+    step.update_one(
+        {"code": documento["code"]},
+        {"$set": documento},
+        upsert=True,
+    )

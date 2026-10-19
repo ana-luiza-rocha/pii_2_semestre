@@ -54,4 +54,9 @@ compliment_steps = [
 
 ]
 
-insert_compliment_steps = step.insert_many(compliment_steps)
+for documento in compliment_steps:
+    step.update_one(
+        {"code": documento["code"]},
+        {"$set": documento},
+        upsert=True,
+    )

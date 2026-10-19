@@ -21,4 +21,20 @@ feedback = {
     "initial_step": "FB_01"
 }
 
-insert_services = service.insert_many([atende_mais, meu_inss, feedback])
+for documento in [atende_mais, meu_inss, feedback]:
+    service.update_one(
+        {"code": documento["code"]},
+        {"$set": documento},
+        upsert=True,
+    )
+
+def find_available_services():
+    return db.service.find({"code": { "$ne": "feedback"}},{"_id": 0,"name": 1}).sort("code", 1)
+
+
+def find_support_title():
+    return db.service.find({"code": "feedback"}, {"_id": 0, "name": 1})
+
+
+def find_services_descriptions():
+    return db.service.find({"code": {"$ne": "feedback"}}, {"_id": 0, "description": 1}).sort("code", 1)

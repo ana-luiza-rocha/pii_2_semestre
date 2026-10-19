@@ -27,4 +27,8 @@ meu_inss_options = {
 
 }
 
-insert_meu_inss_options = step.insert_one(meu_inss_options)
+step.update_one(
+    {"code": meu_inss_options["code"]},
+    {"$set": meu_inss_options},
+    upsert=True,
+)
