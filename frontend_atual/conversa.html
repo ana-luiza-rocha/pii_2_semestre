@@ -6,6 +6,8 @@
   <title>Guia Fácil - Conversa</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+  <script src="js/accessibility.js" defer></script>
 
 </head>
 <body>
@@ -16,15 +18,15 @@
     <!-- botoes do cabeçalho -->
     <nav class="botoes">
       <!-- botao que diminui letra -->
-      <button type="button" aria-label="Diminuir letra">
+      <button type="button" aria-label="Diminuir letra" data-action="decrease-font">
         <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M17 9h5"/></svg>
       </button>
       <!-- botao que aumenta letra -->
-      <button type="button" aria-label="Aumentar letra">
+      <button type="button" aria-label="Aumentar letra" data-action="increase-font">
         <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M19.5 6.5v5M17 9h5"/></svg>
       </button>
       <!-- botao do modo escuro -->
-      <button type="button" aria-label="Modo escuro">
+      <button type="button" aria-label="Modo escuro" data-action="toggle-theme" aria-pressed="false">
         <svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>
       </button>
       <!-- botao que leva a tela inicial -->
@@ -101,5 +103,6 @@
     </div>
 
   </main>
+  <p id="preferences-status" class="preferences-status" role="status"></p>
 </body>
 </html>
