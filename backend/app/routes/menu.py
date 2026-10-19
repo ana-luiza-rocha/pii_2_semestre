@@ -28,3 +28,5 @@ def support():
 def services_descriptions():
     result = find_services_descriptions()
     return [service["description"] for service in result]
+
+

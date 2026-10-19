@@ -1,0 +1,101 @@
+body {
+  font-size: var(--font-size, 17px);
+  overflow-wrap: anywhere;
+}
+
+.topo {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.topo strong {
+  font-size: 1.47em;
+}
+
+.botoes button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 3px solid #b45b00;
+  outline-offset: 4px;
+}
+
+.preferences-status {
+  max-width: 420px;
+  margin: 12px auto;
+  padding: 0 18px;
+  text-align: center;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background: #101b29;
+  color: #edf4ff;
+}
+
+[data-theme="dark"] .topo {
+  background: #163d68;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] .etiqueta,
+[data-theme="dark"] .sugestoes {
+  color: #a9d4ff;
+}
+
+[data-theme="dark"] .subtitulo,
+[data-theme="dark"] .contador,
+[data-theme="dark"] .modal p {
+  color: #c1d3e5;
+}
+
+[data-theme="dark"] .cartao,
+[data-theme="dark"] .balao {
+  background: #214971;
+  color: #edf4ff;
+}
+
+[data-theme="dark"] .cartao:hover,
+[data-theme="dark"] .cartao:active,
+[data-theme="dark"] .sugestoes:hover {
+  background: #315f8e;
+  color: #fff;
+}
+
+[data-theme="dark"] .opcao,
+[data-theme="dark"] .botao {
+  background: #423b26;
+  color: #fff3cf;
+  border-color: #cfb568;
+}
+
+[data-theme="dark"] .botao.secundario,
+[data-theme="dark"] .caixa-texto,
+[data-theme="dark"] .modal-caixa {
+  background: #1c2c40;
+  color: #edf4ff;
+}
+
+[data-theme="dark"] .caixa-texto,
+[data-theme="dark"] .botao.secundario,
+[data-theme="dark"] .sugestoes {
+  border-color: #a9d4ff;
+}
+
+[data-theme="dark"] .caixa-texto::placeholder {
+  color: #c1d3e5;
+}
+
+[data-theme="dark"] .seta,
+[data-theme="dark"] .sugestoes svg {
+  stroke: #a9d4ff;
+}
+
+[data-theme="dark"] :focus-visible {
+  outline-color: #ffd375;
+}
