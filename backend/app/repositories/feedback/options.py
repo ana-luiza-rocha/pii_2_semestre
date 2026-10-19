@@ -1,6 +1,6 @@
 from database import db
 
-services_options = {
+feedback_options = {
 
     "code": "FB_01",
     "service_name": "Sugestões e reclamações",
@@ -9,17 +9,17 @@ services_options = {
 
         {
             "text": "Enviar uma sugestão",
-            "next step": ""
+            "next step": "FB_ES_01"
         }, 
 
         {
             "text": "Fazer uma reclamação",
-            "next step": ""
+            "next step": "FB_FR_01"
         }, 
 
         {
             "text": "Enviar um elogio",
-            "next step": ""
+            "next step": "FB_EE_01"
         }, 
 
         {

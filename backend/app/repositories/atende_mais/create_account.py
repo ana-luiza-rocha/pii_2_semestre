@@ -2,7 +2,7 @@ from database import db
 
 step = db["step"]
 
-atende_mais_steps = [
+create_account_steps = [
 
     {
 
@@ -74,7 +74,6 @@ atende_mais_steps = [
                 "next step": "MENU"
             },
 
-
         ]
 
     },
@@ -99,7 +98,6 @@ atende_mais_steps = [
                 "text": "Voltar para a tela inicial",
                 "next step": "MENU"
             },
-
 
         ]
 
@@ -143,5 +141,6 @@ atende_mais_steps = [
         "next step": "AM_CC_05"
 
     }
+    
 ]
 

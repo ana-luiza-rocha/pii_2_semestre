@@ -1,6 +1,6 @@
 from database import db
 
-services_options = {
+atende_mais_options = {
 
     "code": "AM_1",
     "service_name": "Atende+",

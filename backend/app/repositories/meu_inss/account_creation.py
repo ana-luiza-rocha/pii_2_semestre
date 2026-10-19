@@ -2,7 +2,7 @@ from database import db
 
 step = db["step"]
 
-meu_inss_steps = [
+account_creation_steps = [
 
     {
 
@@ -172,7 +172,6 @@ meu_inss_steps = [
                 "next step": "MENU"
             },
 
-
         ]
 
     },
@@ -202,7 +201,6 @@ meu_inss_steps = [
                 "text": "Voltar para a tela inicial",
                 "next step": "MENU"
             },
-
 
         ]
 
@@ -243,7 +241,6 @@ meu_inss_steps = [
                 "next step": "MENU"
             },
 
-
         ]
 
     },
@@ -274,12 +271,11 @@ meu_inss_steps = [
                 "next step": "MENU"
             },
 
-
         ]
 
     },
 
-        {
+    {
 
         "code": "MI_CC_11",
         "service_name": "Meu INSS",
@@ -297,7 +293,7 @@ meu_inss_steps = [
 
     },
 
-        {
+    {
 
         "code": "MI_CC_13",
         "service_name": "Meu INSS",
@@ -323,12 +319,11 @@ meu_inss_steps = [
                 "next step": "MENU"
             },
 
-
         ]
 
     },
 
-        {
+    {
 
         "code": "MI_CC_14",
         "service_name": "Meu INSS",
@@ -345,5 +340,6 @@ meu_inss_steps = [
         "next step": "MI_CC_07"
 
     }
+
 ]
 
