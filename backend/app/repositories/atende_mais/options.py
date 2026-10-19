@@ -9,12 +9,12 @@ services_options = {
 
         {
             "text": "Criar uma conta",
-            "next step": "AM_2"
+            "next step": "AM_CC_1"
         }, 
 
         {
             "text": "Obter ficha médica",
-            "next step": ""
+            "next step": "AM_OFM_1"
         }, 
 
         {

@@ -6,24 +6,24 @@ atende_mais_steps = [
 
     {
 
-        "code": "AM_1",
+        "code": "AM_CC_01",
         "service_name": "Atende+",
         "message": "Você já está com a ficha médica?",
         "options": [
 
             {
                 "text": "Sim, já tenho",
-                "next step": "AM_2"
+                "next step": "AM_CC_02"
             }, 
 
             {
                 "text": "Não, ainda preciso",
-                "next step": "AM_5"
+                "next step": "AM_CC_05"
             }, 
 
             {
                 "text": "Não sei",
-                "next step": "AM_6"
+                "next step": "AM_CC_06"
             },
 
             {
@@ -42,16 +42,16 @@ atende_mais_steps = [
 
     {
 
-        "code": "AM_2",
+        "code": "AM_CC_02",
         "service_name": "Atende+",
         "message": "Ótimo! Ao iniciar o vídeo, o site do Atende+ será aberto para você acompanhar o passo a passo. O vídeo continuará aparecendo em um tamanho menor enquanto você utiliza o site.",
-        "next step": "AM_3"
+        "next step": "AM_CC_03"
 
     },
 
     {
 
-        "code": "AM_3",
+        "code": "AM_CC_03",
         "service_name": "Atende+",
         "message": "Precisa de ajuda com mais alguma coisa?",
         "options": [
@@ -63,12 +63,12 @@ atende_mais_steps = [
 
             {
                 "text": "Não",
-                "next step": "AM_4"
+                "next step": "AM_CC_04"
             },
 
             {
                 "text": "Voltar à pergunta anterior",
-                "next step": "AM_1"
+                "next step": "AM_CC_01"
             },
 
             {
@@ -83,7 +83,7 @@ atende_mais_steps = [
 
     {
 
-        "code": "AM_4",
+        "code": "AM_CC_04",
         "service_name": "Atende+",
         "message": "Espero ter ajudado! Se precisar novamente, estarei por aqui. Até a próxima!",
         "options": [
@@ -95,7 +95,7 @@ atende_mais_steps = [
 
             {
                 "text": "Voltar à pergunta anterior",
-                "next step": "AM_3"
+                "next step": "AM_CC_03"
             }, 
 
             {
@@ -110,24 +110,24 @@ atende_mais_steps = [
 
     {
 
-        "code": "AM_5",
+        "code": "AM_CC_05",
         "service_name": "Atende+",
         "message": "Quer ver como conseguir sua ficha médica?",
         "options": [
 
             {
                 "text": "Sim, ver tutorial",
-                "next step": "AM_2"
+                "next step": "AM_CC_02"
             }, 
 
             {
                 "text": "Não, obrigado",
-                "next step": "AM_3"
+                "next step": "AM_CC_03"
             }, 
 
             {
                 "text": "Voltar à pergunta anterior",
-                "next step": "AM_1"
+                "next step": "AM_CC_01"
             },
 
             {
@@ -141,10 +141,10 @@ atende_mais_steps = [
 
     {
 
-        "code": "AM_6",
+        "code": "AM_CC_06",
         "service_name": "Atende+",
         "message": "A Ficha de Avaliação Médica é um documento preenchido pelo médico com informações sobre sua condição de saúde e suas necessidades para usar o Atende+.",
-        "next step": "AM_5"
+        "next step": "AM_CC_05"
 
     }
 ]
