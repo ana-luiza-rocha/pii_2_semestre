@@ -1,6 +1,5 @@
 from database import db
-
-step = db["step"]
+from collections import step
 
 compliment_steps = [
 
@@ -50,7 +49,7 @@ compliment_steps = [
             }
 
         ]
-        
+
     }
 
 ]

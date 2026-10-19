@@ -1,6 +1,5 @@
 from database import db
-
-step = db["step"]
+from collections import step
 
 suggestion_steps = [
 
@@ -50,7 +49,7 @@ suggestion_steps = [
             }
 
         ]
-        
+
     }
 
 ]

@@ -1,6 +1,5 @@
 from database import db
-
-step = db["step"]
+from collections import step
 
 create_account_steps = [
 

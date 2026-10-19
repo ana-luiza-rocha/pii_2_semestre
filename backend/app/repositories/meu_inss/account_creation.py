@@ -1,7 +1,5 @@
 from database import db
 
-step = db["step"]
-
 account_creation_steps = [
 
     {

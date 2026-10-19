@@ -1,6 +1,5 @@
 from database import db
-
-step = db["step"]
+from collections import step
 
 get_medical_forms_steps = [
 
