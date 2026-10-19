@@ -1,0 +1,49 @@
+[hidden] {
+  display: none !important;
+}
+
+#chatbot-message {
+  white-space: pre-line;
+}
+
+#chatbot button.opcao {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+#chatbot button.opcao:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+#chatbot button.opcao:hover:not(:disabled) {
+  border-color: #1565c0;
+}
+
+#chatbot-form label {
+  display: block;
+  margin: 12px 0;
+}
+
+#chatbot-score {
+  min-height: auto;
+  margin-bottom: 24px;
+}
+
+#chatbot-status,
+.chatbot-note {
+  margin: 16px 0;
+  line-height: 1.5;
+}
+
+#chatbot-media video {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+#chatbot-options[aria-busy="true"] {
+  opacity: 0.6;
+}

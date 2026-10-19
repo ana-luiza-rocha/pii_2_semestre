@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/accessibility.css">
   <script src="js/accessibility.js" defer></script>
+  <link rel="stylesheet" href="css/chatbot.css">
+  <script src="js/chatbot-media.js" defer></script>
+  <script src="js/chatbot.js" defer></script>
 
 </head>
 <body>
@@ -37,71 +40,33 @@
   </header>
 
   <!-- tela conversa -->
-  <main class="tela">
+  <main class="tela" id="chatbot" data-service="atende">
+    <div class="balao" id="chatbot-message" tabindex="-1">Carregando...</div>
+    <div id="chatbot-media"></div>
 
-    <!-- chat do meu inss, aparece quando o endereço termina em: conversa.html#meu-inss -->
-    <div class="bloco padrao" id="meu-inss">
-
-      <!-- mostra em qual serviço a pessoa está -->
-      <p class="etiqueta">Conversa · Meu INSS</p>
-      <div class="balao">Olá! O que você deseja fazer no Meu INSS hoje?</div>
-
-      <!-- primeira opção -->
-      <div class="opcao">
-        <span class="icone">
-          <svg viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"/><path d="M3 20c0-4 3-6 7-6M18 14v6M15 17h6"/></svg>
-        </span>
-        <span class="texto">Criar uma conta</span>
+    <form id="chatbot-form" hidden>
+      <div id="comment-field" hidden>
+        <label for="chatbot-comment">Sua mensagem</label>
+        <textarea id="chatbot-comment" class="caixa-texto" maxlength="2000"></textarea>
+        <p class="contador" id="chatbot-counter">0 / 2000 caracteres</p>
       </div>
-
-      <!-- segunda opção -->
-      <div class="opcao">
-        <span class="icone">
-          <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><circle cx="12" cy="14" r="2.5"/><path d="M14 16l2 2"/></svg>
-        </span>
-        <span class="texto">Consultar um benefício</span>
+      <div id="score-field" hidden>
+        <label for="chatbot-score">Sua nota para o tutorial</label>
+        <select id="chatbot-score" class="caixa-texto">
+          <option value="">Escolha uma nota</option>
+          <option value="1">1 - Muito ruim</option>
+          <option value="2">2 - Ruim</option>
+          <option value="3">3 - Regular</option>
+          <option value="4">4 - Bom</option>
+          <option value="5">5 - Muito bom</option>
+        </select>
       </div>
+    </form>
 
-      <!-- opção de voltar para a pergunta (nesse caso ainda nao tem a pergunta anterior) -->
-      <a href="index.html" class="opcao voltar">
-        <span class="icone">
-          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
-        </span>
-        <span class="texto">Voltar à pergunta anterior</span>
-      </a>
-    </div>
-
-    <!-- chat do atende+, aparece quando o endereço termina em: conversa.html#atende -->
-    <div class="bloco" id="atende">
-
-      <!-- mostra qual serviço a pessoa está -->
-      <div class="balao">Olá! O que você deseja fazer no Atende+ hoje?</div>
-
-      <!-- primeira opção -->
-      <div class="opcao">
-        <span class="icone">
-          <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M12 13v4M10 15h4"/></svg>
-        </span>
-        <span class="texto">Criar uma conta</span>
-      </div>
-
-      <!-- segunda opção -->
-      <div class="opcao">
-        <span class="icone">
-          <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/><circle cx="12" cy="15" r="2"/><path d="M14 17l2 2"/></svg>
-        </span>
-        <span class="texto">Obter ficha médica</span>
-      </div>
-
-      <!-- voltar para pergunta anterior -->
-      <a href="index.html" class="opcao voltar">
-        <span class="icone">
-          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
-        </span>
-        <span class="texto">Voltar à pergunta anterior</span>
-      </a>
-    </div>
-
+    <div id="chatbot-options"></div>
+    <p id="chatbot-status" role="status" aria-live="polite"></p>
+    <button type="button" id="chatbot-retry" class="opcao" hidden>Tentar novamente</button>
+    <a href="index.html" class="opcao voltar">Voltar para a tela inicial</a>
   </main>
   <p id="preferences-status" class="preferences-status" role="status"></p>
 </body>

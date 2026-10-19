@@ -409,7 +409,7 @@ account_creation_steps = [
 
             {
                 "text": "Meu INSS",
-                "next step": "MI_1"
+                "next step": "MI_01"
             }, 
 
             {
