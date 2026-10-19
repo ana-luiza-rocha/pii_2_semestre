@@ -160,7 +160,7 @@ account_creation_steps = [
 
             {
                 "text": "Avaliar tutorial",
-                "next step": "" # AVALIACAO
+                "next step": "MI_CC_16" 
             }, 
 
             {
@@ -338,6 +338,61 @@ account_creation_steps = [
         "service_name": "Meu INSS",
         "message": "Certo! Como você prefere baixar o aplicativo?",
         "next step": "MI_CC_07"
+
+    },
+
+    {
+
+        "code": "MI_CC_16",
+        "service_name": "Meu INSS",
+        "message": "Qual nota você daria para este tutorial?",
+        "options": [
+
+            {
+                "text": "Enviar",
+                "next step": "MI_CC_17"
+            }, 
+
+            {
+                "text": "Voltar à pergunta anterior",
+            }, 
+
+            {
+                "text": "Voltar para a tela inicial",
+                "next step": "MENU"
+            },
+
+        ]
+
+    },
+
+    {
+
+        "code": "MI_CC_17",
+        "service_name": "Atende+",
+        "message": "Avaliação enviada com sucesso!",
+        "next step": "MI_CC_18"
+
+    },
+
+    
+    {
+
+        "code": "MI_CC_18",
+        "service_name": "Atende+",
+        "message": "Obrigado por ajudar a melhorar o Guia Fácil",
+        "options": [
+
+            {
+                "text": "Voltar à pergunta anterior",
+            }, 
+
+            {
+                "text": "Voltar para a tela inicial",
+                "next step": "MENU"
+            },
+
+        ]
 
     }
 
