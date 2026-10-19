@@ -10,12 +10,12 @@ atende_mais_options = {
 
         {
             "text": "Criar uma conta",
-            "next step": "AM_CC_1"
+            "next step": "AM_CC_01"
         }, 
 
         {
             "text": "Obter ficha médica",
-            "next step": "AM_OFM_1"
+            "next step": "AM_OFM_01"
         }, 
 
         {

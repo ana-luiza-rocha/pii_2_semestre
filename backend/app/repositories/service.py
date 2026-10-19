@@ -5,7 +5,7 @@ atende_mais = {
     "code": "atende+",
     "name": "Atende+",
     "description": "Agendamentos e serviços",
-    "initial_step": "AM_01"
+    "initial_step": "AM_1"
 }
 
 meu_inss = {
