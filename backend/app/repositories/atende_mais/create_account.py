@@ -28,7 +28,6 @@ atende_mais_steps = [
 
             {
                 "text": "Voltar à pergunta anterior",
-                "next step": "MENU"
             },
 
             {
@@ -68,7 +67,6 @@ atende_mais_steps = [
 
             {
                 "text": "Voltar à pergunta anterior",
-                "next step": "AM_CC_01"
             },
 
             {
@@ -95,7 +93,6 @@ atende_mais_steps = [
 
             {
                 "text": "Voltar à pergunta anterior",
-                "next step": "AM_CC_03"
             }, 
 
             {
@@ -127,7 +124,6 @@ atende_mais_steps = [
 
             {
                 "text": "Voltar à pergunta anterior",
-                "next step": "AM_CC_01"
             },
 
             {
