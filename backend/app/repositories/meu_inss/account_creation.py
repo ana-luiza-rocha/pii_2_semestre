@@ -1,4 +1,5 @@
-from database import db
+from app.database.database import db
+from app.repositories.collections import step
 
 account_creation_steps = [
 
@@ -426,3 +427,4 @@ account_creation_steps = [
 
 ]
 
+insert_account_creation_steps = step.insert_many(account_creation_steps)

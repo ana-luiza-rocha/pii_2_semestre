@@ -1,4 +1,5 @@
-from database import db
+from app.database.database import db
+from app.repositories.collections import step
 
 meu_inss_options = {
 
@@ -25,3 +26,5 @@ meu_inss_options = {
     ]
 
 }
+
+insert_meu_inss_options = step.insert_many(meu_inss_options)

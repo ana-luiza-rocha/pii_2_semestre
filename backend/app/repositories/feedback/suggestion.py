@@ -1,5 +1,5 @@
-from database import db
-from collections import step
+from app.database.database import db
+from app.repositories.collections import step
 
 suggestion_steps = [
 
@@ -54,3 +54,4 @@ suggestion_steps = [
 
 ]
 
+insert_suggestion_steps = step.insert_many(suggestion_steps)

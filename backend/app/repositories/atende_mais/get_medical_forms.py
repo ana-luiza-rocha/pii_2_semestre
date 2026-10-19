@@ -1,5 +1,5 @@
-from database import db
-from collections import step
+from app.database.database import db
+from app.repositories.collections import step
 
 get_medical_forms_steps = [
 
@@ -202,3 +202,4 @@ get_medical_forms_steps = [
 
 ]
 
+insert_medical_forms_steps = step.insert_many(get_medical_forms_steps)

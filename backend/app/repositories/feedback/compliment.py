@@ -1,5 +1,5 @@
-from database import db
-from collections import step
+from app.database.database import db
+from app.repositories.collections import step
 
 compliment_steps = [
 
@@ -54,3 +54,4 @@ compliment_steps = [
 
 ]
 
+insert_compliment_steps = step.insert_many(compliment_steps)

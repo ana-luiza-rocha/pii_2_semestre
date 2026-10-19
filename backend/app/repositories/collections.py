@@ -1,4 +1,4 @@
-from database import db
+from app.database.database import db
 
 service = db["service"]
 step = db["step"]
