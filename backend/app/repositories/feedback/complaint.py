@@ -10,10 +10,6 @@ complaint_steps = [
         "message": "Conte para a gente o que aconteceu para que possamos melhorar",
         "options": [
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            },
 
             {
                 "text": "Enviar",
@@ -43,10 +39,6 @@ complaint_steps = [
                 "text": "Voltar à pergunta anterior",
             },
 
-            {
-                "text": "Voltar para a tela inicial",
-                "next step": "MENU"
-            }
 
         ]
 

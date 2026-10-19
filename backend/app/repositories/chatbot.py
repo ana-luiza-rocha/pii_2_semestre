@@ -10,13 +10,10 @@ STEP_ALIASES = {
     "AM_OFM_1": "AM_OFM_01",
 }
 
-INPUT_STEPS = {
-    "FB_ES_01": ("comment", "suggestion"),
-    "FB_FR_01": ("comment", "complaint"),
-    "FB_EE_01": ("comment", "compliment"),
-    "AM_CC_07": ("score", "evaluation"),
-    "AM_OFM_07": ("score", "evaluation"),
-    "MI_CC_16": ("score", "evaluation"),
+COMMENT_TYPES = {
+    "FB_ES_01": "suggestion",
+    "FB_FR_01": "complaint",
+    "FB_EE_01": "compliment",
 }
 
 
@@ -31,9 +28,15 @@ def find_step(code):
         if target in STEP_ALIASES:
             option["next step"] = STEP_ALIASES[target]
 
-    input_type, feedback_type = INPUT_STEPS.get(code, (None, None))
-    result["input_type"] = input_type
-    result["feedback_type"] = feedback_type
+    result["input_type"] = None
+    result["feedback_type"] = None
+
+    if code in COMMENT_TYPES:
+        result["input_type"] = "comment"
+        result["feedback_type"] = COMMENT_TYPES[code]
+    elif code in ["AM_CC_07", "AM_OFM_07", "MI_CC_16"]:
+        result["input_type"] = "score"
+        result["feedback_type"] = "evaluation"
     return result
 
 

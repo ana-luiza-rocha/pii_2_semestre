@@ -18,10 +18,6 @@ meu_inss_options = {
             "next step": "" #o fluxo de benefício não existe ainda!
         }, 
 
-        {
-            "text": "Voltar para a tela inicial",
-            "next step": "MENU"
-        },
 
     ]
 
