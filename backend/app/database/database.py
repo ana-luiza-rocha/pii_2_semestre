@@ -22,7 +22,7 @@ from pymongo.errors import PyMongoError
 # para usar este arquivo, importe o seguinte: db, check_connection, close_connection
 #====================#
 
-from db_config import (
+from .db_config import (
     MONGO_HOST,
     MONGO_PORT,
     MONGO_DB,
