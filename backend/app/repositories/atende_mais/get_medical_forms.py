@@ -2,7 +2,7 @@ from database import db
 
 step = db["step"]
 
-atende_mais_steps = [
+get_medical_forms_steps = [
 
     {
 
@@ -38,7 +38,6 @@ atende_mais_steps = [
                 "text": "Voltar para a tela inicial",
                 "next step": "MENU"
             },
-
 
         ]
 
@@ -112,8 +111,10 @@ atende_mais_steps = [
                 "text": "Voltar para a tela inicial",
                 "next step": "MENU"
             },
+
         ]
 
     }
+
 ]
 

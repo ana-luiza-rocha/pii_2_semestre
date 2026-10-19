@@ -1,6 +1,6 @@
 from database import db
 
-services_options = {
+meu_inss_options = {
 
     "code": "MI_01",
     "service_name": "Meu INSS",
