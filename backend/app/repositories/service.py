@@ -1,6 +1,5 @@
 from database import db
-
-service = db["service"]
+from collections import service
 
 atende_mais = {
     "code": "atende+",
