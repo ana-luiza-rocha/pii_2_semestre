@@ -22,6 +22,9 @@ services:
       start_period: 10s
 
   seed:
+    # A carga de dados so roda quando solicitada explicitamente.
+    profiles: ["carga"]
+
     build:
       context: .
       dockerfile: Dockerfile.seed

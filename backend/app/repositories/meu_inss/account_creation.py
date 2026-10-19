@@ -427,4 +427,9 @@ account_creation_steps = [
 
 ]
 
-insert_account_creation_steps = step.insert_many(account_creation_steps)
+for documento in account_creation_steps:
+    step.update_one(
+        {"code": documento["code"]},
+        {"$set": documento},
+        upsert=True,
+    )

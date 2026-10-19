@@ -27,4 +27,8 @@ atende_mais_options = {
 
 }
 
-insert_atende_mais_options = step.insert_one(atende_mais_options)
+step.update_one(
+    {"code": atende_mais_options["code"]},
+    {"$set": atende_mais_options},
+    upsert=True,
+)

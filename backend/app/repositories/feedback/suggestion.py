@@ -54,4 +54,9 @@ suggestion_steps = [
 
 ]
 
-insert_suggestion_steps = step.insert_many(suggestion_steps)
+for documento in suggestion_steps:
+    step.update_one(
+        {"code": documento["code"]},
+        {"$set": documento},
+        upsert=True,
+    )

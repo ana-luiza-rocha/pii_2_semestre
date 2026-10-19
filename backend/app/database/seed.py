@@ -1,4 +1,4 @@
-"""Carrega os dados iniciais. Cada execucao pode adicionar documentos repetidos."""
+"""Carrega ou atualiza os dados iniciais usando o campo code."""
 
 from app.database.database import client, close_connection
 
@@ -7,7 +7,7 @@ if __name__ == "__main__":
     try:
         client.admin.command("ping")
 
-        # Cada modulo executa a insercao que ja existe no seu arquivo.
+        # Cada modulo insere ou atualiza os documentos pelo campo code.
         import app.repositories.service
 
         import app.repositories.atende_mais.options
@@ -22,6 +22,6 @@ if __name__ == "__main__":
         import app.repositories.feedback.compliment
         import app.repositories.feedback.suggestion
 
-        print("Todos os dados foram inseridos!", flush=True)
+        print("Todos os dados foram inseridos ou atualizados!", flush=True)
     finally:
         close_connection()

@@ -54,4 +54,9 @@ complaint_steps = [
 
 ]
 
-insert_complaint_steps = step.insert_many(complaint_steps)
+for documento in complaint_steps:
+    step.update_one(
+        {"code": documento["code"]},
+        {"$set": documento},
+        upsert=True,
+    )
