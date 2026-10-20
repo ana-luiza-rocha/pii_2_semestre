@@ -4,64 +4,82 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Guia Fácil</title>
-  <link rel="stylesheet" href="css/acessibility-controls.css">
-  <link rel="stylesheet" href="css/back-navigation.css">
-  <link rel="stylesheet" href="css/chat-interface.css">
+  <!-- css dessa tela e de coisas específicas -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- css para todas as telas -->
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/home-screen.css">
-  <link rel="stylesheet" href="css/microphone.css">
-  <link rel="stylesheet" href="css/search-bar.css">
-  <link rel="stylesheet" href="css/services-categories.css">
-  <link rel="stylesheet" href="css/services-questions.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+  <script src="js/accessibility.js" defer></script>
 </head>
 <body>
 
+  <!-- cabeçalho (igual em todas as telas) -->
   <header class="topo">
     <strong>Guia Fácil</strong>
-    <a href="#">sobre</a>
-    <a href="#">suporte</a>
+    <!-- botoes do cabeçalho -->
+    <nav class="botoes">
+      <!-- botao de diminuir a letra -->
+      <button type="button" aria-label="Diminuir letra" data-action="decrease-font">
+        <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M17 9h5"/></svg>
+      </button>
+      <!-- botao de aumentar a letra -->
+      <button type="button" aria-label="Aumentar letra" data-action="increase-font">
+        <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M19.5 6.5v5M17 9h5"/></svg>
+      </button>
+      <!-- botao modo escuro -->
+      <button type="button" aria-label="Modo escuro" data-action="toggle-theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>
+      </button>
+      <!-- botao da casinha que leva a tela inicial -->
+      <a href="index.html" aria-label="Tela principal" title="Tela principal">
+        <svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4zM10 20v-6h4v6"/></svg>
+      </a>
+    </nav>
   </header>
 
-  <div class="ferramentas">
-    <button id="btn-contraste" aria-label="Modo escuro">◐</button>
-    <button id="btn-aumentar" aria-label="Aumentar letra">+</button>
-    <button id="btn-diminuir" aria-label="Diminuir letra">−</button>
-  </div>
+    <!-- tela inicial -->
+  <main class="tela">
+    <h1>Como posso te ajudar hoje?</h1>
+    <p class="subtitulo">Escolha um serviço para começar</p>
 
-  <main>
-    <section id="tela-home" class="tela ativa">
-      <h1>Com o que você quer ajuda hoje?</h1>
-      <div id="categorias" class="categorias"></div>
-      <ul id="perguntas" class="perguntas"></ul>
-    </section>
+    <!-- caixa que junta os cartoes e da espaço entre eles -->
+    <div class="servicos">
+      <!-- cartao do atende+, abre a conversa dele (o # diz qual conversa vai mostrar) -->
+      <a href="conversa.html#atende" class="cartao">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2M4 14h3v5H4zM17 14h3v5h-3zM20 19c0 2-2 3-5 3h-2"/></svg>
+        </span>
+        <span class="texto">
+          <strong id="nome-atende">Carregando...</strong>
+          <small id="descricao-atende">Carregando...</small>
+        </span>
+        <!-- seta p direita dentro do cartao -->
+        <svg class="seta" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <!-- cartao do meu inss -->
+      <a href="conversa.html#meu-inss" class="cartao">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M5.5 16c.5-2 3.5-2 4 0M14 10h4M14 14h4"/></svg>
+        </span>
+        <span class="texto">
+          <strong id="nome-inss">Carregando...</strong>
+          <small id="descricao-inss">Carregando...</small>
+        </span>
+        <!-- seta p direita -->
+        <svg class="seta" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
 
-    <section id="tela-chat" class="tela">
-      <button id="btn-voltar" class="voltar">← Voltar ao início</button>
-      <div id="conversa"></div>
-    </section>
-
+    </div>
+    
+    <!-- botao de sugestões e reclamações -->
+    <a href="sugestoes.html" class="sugestoes">
+    <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 8.5v3M12 13.5v.01"/></svg>
+    <span id="nome-suporte">Carregando...</span>
+    </a>
   </main>
 
-  <div class="barra">
-    <input id="busca" type="text" placeholder="Digite aqui" aria-label="Digite aqui">
-    <!-- aria label é p leitor -->
-    <button id="btn-buscar" aria-label="Buscar">
-      <svg viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="7"/>
-        <path d="M20 20l-4-4"/>
-      </svg>
-    </button>
-
-    <button class="mic" aria-label="Microfone">
-      <svg viewBox="0 0 24 24">
-        <rect x="9" y="3" width="6" height="11" rx="3"/>
-        <path d="M5 11a7 7 0 0014 0M12 18v3"/>
-      </svg>
-    </button>
-  </div>
-
-<script src="algo.js"></script>
-
+  <p id="preferences-status" class="preferences-status" role="status"></p>
+  <p id="erro-menu" role="status" style="text-align: center;"></p>
+  <script src="js/menu.js"></script>
 </body>
 </html>

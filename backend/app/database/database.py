@@ -4,9 +4,6 @@
 # REPRESENTA O BANCO A SER USADO
 # ============================================== #
 
-# biblioteca para URL
-from urllib.parse import quote_plus
-
 # === PYMONGO ===#
 from pymongo import MongoClient
 
@@ -22,27 +19,14 @@ from pymongo.errors import PyMongoError
 # para usar este arquivo, importe o seguinte: db, check_connection, close_connection
 #====================#
 
-from .db_config import (
-    MONGO_HOST,
-    MONGO_PORT,
-    MONGO_DB,
-    MONGO_ROOT_USER,
-    MONGO_ROOT_PASSWORD,
+from db_config import (
+    MONGODB_DB,
+    MONGODB_URI
 )
 
-# formata para url
-username = quote_plus(MONGO_ROOT_USER)
-password = quote_plus(MONGO_ROOT_PASSWORD)
+client = MongoClient(MONGODB_URI, timeoutMS=5000)
 
-URI = (
-    f"mongodb://{username}:{password}"
-    f"@{MONGO_HOST}:{MONGO_PORT}/"
-    "?authSource=admin"
-)
-
-client = MongoClient(URI)
-
-db = client[MONGO_DB]
+db = client[MONGODB_DB]
 
 # a função abaixo serve para verificar se
 # o MongoDB está responsivo e "alcançável"
@@ -51,7 +35,9 @@ def check_connection():
         client.admin.command("ping")
         return True
 
-    except PyMongoError:
+    except PyMongoError as e:
+        print(f"\033[91m{type(e)}\033[00m")
+        print(f"\033[38;2;255;165;0m{e}\033[0m")
         return False
 
 # praticidade.
@@ -59,7 +45,7 @@ def close_connection():
     client.close()
 
 if __name__ == "__main__":
-    TESTING = False
+    TESTING = True
 
     if TESTING == True:
         print("== TESTANDO ==")
