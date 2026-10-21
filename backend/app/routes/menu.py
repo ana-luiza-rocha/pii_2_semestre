@@ -1,33 +1,27 @@
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import APIRouter, HTTPException
+
 from pymongo.errors import PyMongoError
 from app.repositories.chatbot import find_step, save_answer
 from app.schemas.chatbot import ChatbotAnswer
 from app.repositories.service import find_available_services, find_support_title, find_services_descriptions
 
-app = FastAPI()
+router = APIRouter()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5500", "http://127.0.0.1:5500"],
-    allow_methods=["GET", "POST"],
-    allow_headers=["*"],
-)
 
 # rota para retornar o nome dos serviços encontrados no site: Atende+ e meu INSS
-@app.get("/services")
+@router.get("/services")
 def services():
     result = find_available_services()
     return [service["name"] for service in result]
 
 # rota para retornar o nome usado no botão de suporte
-@app.get("/support")
+@router.get("/support")
 def support():
     result = find_support_title()
     return [service["name"] for service in result]
 
 
-@app.get("/services/descriptions")
+@router.get("/services/descriptions")
 def services_descriptions():
     result = find_services_descriptions()
     return [service["description"] for service in result]
@@ -54,12 +48,12 @@ def check_answer(answer, step):
         raise HTTPException(status_code=422, detail="Escolha uma nota de 1 a 5.")
 
 
-@app.get("/steps/{code}")
+@router.get("/steps/{code}")
 def chatbot_step(code: str):
     return get_step(code)
 
 
-@app.post("/chatbot/answers")
+@router.post("/chatbot/answers")
 def chatbot_answer(answer: ChatbotAnswer):
     step = get_step(answer.step_code)
     check_answer(answer, step)
