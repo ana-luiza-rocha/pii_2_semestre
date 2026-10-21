@@ -7,8 +7,8 @@ const score = document.getElementById("chatbot-score");
 const status = document.getElementById("chatbot-status");
 const retry = document.getElementById("chatbot-retry");
 
-const BASE_URL = "https://guiafacilmaua.onrender.com";
-
+// const BASE_URL = "https://guiafacilmaua.onrender.com";
+const BASE_URL = "http://127.0.0.1:8000";
 
 let currentStep = null;
 let stepHistory = [];
@@ -63,9 +63,13 @@ function showStep() {
 
   for (const option of currentStep.options || []) {
     const target = option["next step"];
-    if (target === "MENU" || option.text.includes("pergunta anterior")) continue;
+    if (option.text.includes("pergunta anterior")) continue;
 
-    if (option.text === "Enviar" && currentStep.input_type) {
+    if (target === "MENU") {
+      createButton(option.text, function () {
+        window.location.href = "index.html";
+      });
+    } else if (option.text === "Enviar" && currentStep.input_type) {
       sendTarget = target;
       const button = createButton("Enviar", null);
       button.type = "submit";
