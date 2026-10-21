@@ -61,11 +61,14 @@ class ChatbotTests(unittest.TestCase):
         self.assertTrue(upsert)
         self.answers.setdefault(query["_id"], copy.deepcopy(update["$setOnInsert"]))
 
-    def test_home_is_not_a_chatbot_option(self):
+    def test_home_is_available_in_initial_steps(self):
+        home_steps = []
         for step in self.steps.values():
             for option in step.get("options", []):
-                self.assertNotEqual(option.get("next step"), "MENU")
-                self.assertNotIn(option["text"], ["Voltar para a tela inicial", "Voltar para a tela principal"])
+                if option.get("next step") == "MENU":
+                    home_steps.append(step["code"])
+                    self.assertEqual(option["text"], "Voltar para a página inicial")
+        self.assertCountEqual(home_steps, ["AM_1", "MI_01", "FB_01"])
 
     def test_all_destinations_exist(self):
         for step in self.steps.values():
