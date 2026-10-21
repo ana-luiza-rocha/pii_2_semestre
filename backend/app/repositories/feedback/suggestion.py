@@ -25,6 +25,7 @@ suggestion_steps = [
         "code": "FB_ES_02",
         "service_name": "Feedback",
         "message": "Mensagem enviada com sucesso!",
+        "show_with_next": True,
         "next step": "FB_ES_03"
 
     },

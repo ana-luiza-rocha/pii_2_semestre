@@ -41,7 +41,13 @@ function updateCounter() {
 }
 
 function showStep() {
-  message.textContent = currentStep.message;
+  message.replaceChildren();
+  for (const text of currentStep.messages || [currentStep.message]) {
+    const bubble = document.createElement("div");
+    bubble.className = "balao";
+    bubble.textContent = text;
+    message.appendChild(bubble);
+  }
   showMedia(currentStep);
   options.replaceChildren();
   sendTarget = null;
@@ -107,8 +113,15 @@ async function loadStep(code, goingBack = false) {
 
   try {
     const response = await fetch(`${BASE_URL}/steps/${code}`);
-    const step = await response.json();
+    let step = await response.json();
     if (!response.ok) throw new Error("Etapa não encontrada.");
+
+    if (step.show_with_next && step["next step"]) {
+      const nextResponse = await fetch(`${BASE_URL}/steps/${step["next step"]}`);
+      const nextStep = await nextResponse.json();
+      if (!nextResponse.ok) throw new Error("Etapa não encontrada.");
+      step = { ...nextStep, messages: [step.message, nextStep.message] };
+    }
 
     if (goingBack) {
       stepHistory.pop();
