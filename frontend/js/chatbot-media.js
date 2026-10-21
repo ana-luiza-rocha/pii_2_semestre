@@ -25,7 +25,7 @@ function showMedia(step) {
     media.appendChild(video);
   }
 
-  if (websiteUrl) {
+  if (websiteUrl && !step.link) {
     const link = document.createElement("a");
     link.className = "opcao";
     link.textContent = "Abrir site em outra aba";
@@ -39,7 +39,7 @@ function showMedia(step) {
   note.className = "chatbot-note";
   if (!videoUrl && step.message.toLowerCase().includes("vídeo")) {
     note.textContent = "O vídeo deste passo ainda não foi adicionado.";
-  } else if (!websiteUrl && /clique no botão|toque no botão/i.test(step.message)) {
+  } else if (!websiteUrl && !step.link && /clique no botão|toque no botão/i.test(step.message)) {
     note.textContent = "O link deste passo ainda não foi adicionado.";
   }
   if (note.textContent) media.appendChild(note);

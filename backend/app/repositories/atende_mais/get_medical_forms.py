@@ -43,6 +43,12 @@ get_medical_forms_steps = [
         "code": "AM_OFM_03",
         "service_name": "Atende+",
         "message": "A SPTrans tem um site onde você pode ver os endereços dos postos de atendimento disponíveis. Toque no botão abaixo para consultar.",
+        "link": {
+            "text": "Ver postos da SPTrans",
+            "subtext": "Abre o site da SPTrans",
+            "url": "https://www.sptrans.com.br/encontrar-posto?cat=atende"
+        },
+        "website_path": "https://www.sptrans.com.br/encontrar-posto?cat=atende",
         "next step": "AM_OFM_04"
 
     },

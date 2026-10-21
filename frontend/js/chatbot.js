@@ -41,6 +41,11 @@ function updateCounter() {
 }
 
 function showStep() {
+  const stepLink = currentStep.link || (currentStep.code === "AM_OFM_03" ? {
+    text: "Ver postos da SPTrans",
+    subtext: "Abre o site da SPTrans",
+    url: "https://www.sptrans.com.br/encontrar-posto?cat=atende",
+  } : null);
   message.replaceChildren();
   for (const text of currentStep.messages || [currentStep.message]) {
     const bubble = document.createElement("div");
@@ -48,7 +53,21 @@ function showStep() {
     bubble.textContent = text;
     message.appendChild(bubble);
   }
-  showMedia(currentStep);
+  if (stepLink) {
+    const link = document.createElement("a");
+    link.className = "balao chatbot-link-card";
+    link.href = stepLink.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    const title = document.createElement("strong");
+    title.textContent = stepLink.text;
+    const subtitle = document.createElement("span");
+    subtitle.textContent = stepLink.subtext;
+    link.append(title, subtitle);
+    message.appendChild(link);
+  }
+  showMedia({ ...currentStep, link: stepLink });
   options.replaceChildren();
   sendTarget = null;
 
