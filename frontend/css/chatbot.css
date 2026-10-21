@@ -3,7 +3,17 @@
 }
 
 #chatbot-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#chatbot-message .balao {
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
   white-space: pre-line;
+  overflow-wrap: anywhere;
 }
 
 #chatbot button.opcao {

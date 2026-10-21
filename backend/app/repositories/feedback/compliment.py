@@ -25,6 +25,7 @@ compliment_steps = [
         "code": "FB_EE_02",
         "service_name": "Feedback",
         "message": "Mensagem enviada com sucesso!",
+        "show_with_next": True,
         "next step": "FB_EE_03"
 
     },
