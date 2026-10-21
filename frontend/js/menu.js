@@ -1,8 +1,10 @@
+const BASE_URL = "http://127.0.0.1:8000";
+
 async function carregarMenu() {
   try {
-    const respostaServicos = await fetch("http://127.0.0.1:8000/services");
-    const respostaSuporte = await fetch("http://127.0.0.1:8000/support");
-    const respostaDescricoes = await fetch("http://127.0.0.1:8000/services/descriptions");
+    const respostaServicos = await fetch(`${BASE_URL}/services`);
+    const respostaSuporte = await fetch(`${BASE_URL}/support`);
+    const respostaDescricoes = await fetch(`${BASE_URL}/services/descriptions`);
 
     if (!respostaServicos.ok || !respostaSuporte.ok || !respostaDescricoes.ok) {
       throw new Error("Erro ao buscar os dados do menu na API");
