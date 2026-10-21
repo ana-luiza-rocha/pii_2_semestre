@@ -7,6 +7,9 @@ const score = document.getElementById("chatbot-score");
 const status = document.getElementById("chatbot-status");
 const retry = document.getElementById("chatbot-retry");
 
+const BASE_URL = "http://127.0.0.1:8000";
+
+
 let currentStep = null;
 let stepHistory = [];
 let drafts = {};
@@ -99,7 +102,7 @@ async function loadStep(code, goingBack = false) {
   retry.hidden = true;
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/steps/" + code);
+    const response = await fetch(`${BASE_URL}/steps/${code}`);
     const step = await response.json();
     if (!response.ok) throw new Error("Etapa não encontrada.");
 
@@ -143,7 +146,7 @@ async function sendAnswer(event) {
   status.textContent = "Enviando...";
   retry.hidden = true;
   try {
-    const response = await fetch("http://127.0.0.1:8000/chatbot/answers", {
+    const response = await fetch(`${BASE_URL}/chatbot/answers`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(answer),
