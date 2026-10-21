@@ -6,7 +6,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://guiafacilmaua.onrender.com", "http://127.0.0.1:5500"],
+    allow_origins=["https://guiafacilmaua.onrender.com", "https://guiafacilmaua.pages.dev"],
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
