@@ -8,8 +8,8 @@ const scoreValue = document.getElementById("chatbot-score-value");
 const status = document.getElementById("chatbot-status");
 const retry = document.getElementById("chatbot-retry");
 
-// const BASE_URL = "https://guiafacilmaua.onrender.com";
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = "https://guiafacilmaua.onrender.com";
+// const BASE_URL = "http://127.0.0.1:8000";
 
 let currentStep = null;
 let stepHistory = [];
@@ -167,7 +167,7 @@ async function loadStep(code, goingBack = false) {
     showStep();
     status.textContent = "";
   } catch (error) {
-    status.textContent = "Não foi possível carregar a conversa. Confira a API e os dados do banco.";
+    status.textContent = "Não conseguimos carregar a conversa... Tente atualizar a página daqui 15 segundos." // "Não foi possível carregar a conversa. Confira a API e os dados do banco.";
     retry.hidden = false;
     retry.onclick = function () {
       loadStep(code, goingBack);
