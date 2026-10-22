@@ -58,9 +58,35 @@
   margin: 12px 0;
 }
 
-#chatbot-score {
-  min-height: auto;
-  margin-bottom: 24px;
+#chatbot-score-stars {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0 24px;
+}
+
+#chatbot-score-stars button {
+  border: 0;
+  background: transparent;
+  color: #b7791f;
+  font: inherit;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 2px;
+  cursor: pointer;
+}
+
+#chatbot-score-stars button:hover,
+#chatbot-score-stars button:focus-visible {
+  color: #8a5700;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+#chatbot-score-value {
+  margin-left: 8px;
+  font-size: 1rem;
 }
 
 #chatbot-status,

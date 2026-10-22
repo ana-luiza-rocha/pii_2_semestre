@@ -7,7 +7,8 @@ get_medical_forms_steps = [
 
         "code": "AM_OFM_01",
         "service_name": "Atende+",
-        "message": "Você pode pegar sua ficha médica em um Posto de Atendimento da SPTrans",
+        "message": "Abaixo, você encontrará um vídeo com o passo a passo para obter a sua ficha médica no site do Atende+.",
+        "video_path": "videos/Obter_ficha_medica_atende_mais.mp4",
         "next step": "AM_OFM_02"
 
     },
@@ -16,18 +17,18 @@ get_medical_forms_steps = [
 
         "code": "AM_OFM_02",
         "service_name": "Atende+",
-        "message": "Quer encontrar um posto perto de você?",
+        "message": "Precisa de ajuda com mais alguma coisa?",
         "options": [
 
             {
-                "text": "Sim, por favor",
-                "next step": "AM_OFM_03" 
+                "text": "Sim",
+                "next step": "AM_OFM_7"
             }, 
 
             {
-                "text": "Não, obrigado",
-                "next step": "AM_OFM_05"
-            },
+                "text": "Não",
+                "next step": "AM_OFM_03"
+            }, 
 
             {
                 "text": "Voltar à pergunta anterior",
@@ -42,14 +43,21 @@ get_medical_forms_steps = [
 
         "code": "AM_OFM_03",
         "service_name": "Atende+",
-        "message": "A SPTrans tem um site onde você pode ver os endereços dos postos de atendimento disponíveis. Toque no botão abaixo para consultar.",
-        "link": {
-            "text": "Ver postos da SPTrans",
-            "subtext": "Abre o site da SPTrans",
-            "url": "https://www.sptrans.com.br/encontrar-posto?cat=atende"
-        },
-        "website_path": "https://www.sptrans.com.br/encontrar-posto?cat=atende",
-        "next step": "AM_OFM_04"
+        "message": "Espero ter ajudado! Se precisar novamente, estarei por aqui! Até a próxima!",
+        "options": [
+
+            {
+                "text": "Avaliar tutorial",
+                "next step": "AM_OFM_04" 
+            }, 
+
+            {
+                "text": "Voltar para a página inicial",
+                "next step": "MENU"
+            }, 
+
+
+        ]
 
     },
 
@@ -57,8 +65,20 @@ get_medical_forms_steps = [
 
         "code": "AM_OFM_04",
         "service_name": "Atende+",
-        "message": "Lembre-se de levar a ficha ao seu médico para preencher.",
-        "next step": "AM_OFM_05"
+        "message": "Qual nota você daria para este tutorial?",
+        "options": [
+
+            {
+                "text": "Enviar",
+                "next step": "AM_OFM_05"
+            }, 
+
+            {
+                "text": "Voltar à pergunta anterior",
+            }, 
+
+
+        ]
 
     },
 
@@ -66,89 +86,23 @@ get_medical_forms_steps = [
 
         "code": "AM_OFM_05",
         "service_name": "Atende+",
-        "message": "Precisa de ajuda com mais alguma coisa?",
-        "options": [
-
-            {
-                "text": "Sim",
-                "next step": "AM_OFM_10"
-            }, 
-
-            {
-                "text": "Não",
-                "next step": "AM_OFM_06"
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            },
-
-
-        ]
-
-    },
-
-    {
-
-        "code": "AM_OFM_06",
-        "service_name": "Atende+",
-        "message": "Espero ter ajudado! Se precisar novamente, estarei por aqui! Até a próxima!",
-        "options": [
-
-            {
-                "text": "Avaliar tutorial",
-                "next step": "AM_OFM_07" 
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            }, 
-
-
-        ]
-
-    },
-
-    {
-
-        "code": "AM_OFM_07",
-        "service_name": "Atende+",
-        "message": "Qual nota você daria para este tutorial?",
-        "options": [
-
-            {
-                "text": "Enviar",
-                "next step": "AM_OFM_08"
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            }, 
-
-
-        ]
-
-    },
-
-    {
-
-        "code": "AM_OFM_08",
-        "service_name": "Atende+",
         "message": "Avaliação enviada com sucesso!",
-        "next step": "AM_OFM_09"
+        "show_with_next": True,
+        "next step": "AM_OFM_06"
 
     },
 
     
     {
 
-        "code": "AM_OFM_09",
+        "code": "AM_OFM_06",
         "service_name": "Atende+",
         "message": "Obrigado por ajudar a melhorar o Guia Fácil",
         "options": [
 
             {
-                "text": "Voltar à pergunta anterior",
+                "text": "Voltar para a página inicial",
+                "next step": "MENU"
             }, 
 
 
@@ -158,7 +112,7 @@ get_medical_forms_steps = [
 
     {
 
-        "code": "AM_OFM_10",
+        "code": "AM_OFM_7",
         "service_name": "Atende+",
         "message": "Com qual serviço você gostaria de ajuda?",
         "options": [
@@ -185,8 +139,13 @@ get_medical_forms_steps = [
 ]
 
 for documento in get_medical_forms_steps:
-    step.update_one(
+    step.replace_one(
         {"code": documento["code"]},
-        {"$set": documento},
+        documento,
         upsert=True,
     )
+
+current_step_codes = [documento["code"] for documento in get_medical_forms_steps]
+step.delete_many({
+    "code": {"$regex": "^AM_OFM_", "$nin": current_step_codes}
+})

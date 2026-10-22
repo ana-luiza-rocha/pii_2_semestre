@@ -113,7 +113,7 @@ account_creation_steps = [
 
             {
                 "text": "Sim",
-                "next step": "MI_CC_19"
+                "next step": "MI_CC_15"
             }, 
 
             {
@@ -139,11 +139,12 @@ account_creation_steps = [
 
             {
                 "text": "Avaliar tutorial",
-                "next step": "MI_CC_16" 
+                "next step": "MI_CC_12" 
             }, 
 
             {
-                "text": "Voltar à pergunta anterior",
+                "text": "Voltar para a página inicial",
+                "next step": "MENU"
             }, 
 
 
@@ -182,6 +183,7 @@ account_creation_steps = [
         "code": "MI_CC_08",
         "service_name": "Meu INSS",
         "message": "Ótimo! No vídeo, você verá passo a passo como entrar na sua conta Gov.br pelo aplicativo.",
+        "video_path": "videos/Criar_conta_gov.mp4",
         "next step": "MI_CC_03"
 
     },
@@ -200,7 +202,7 @@ account_creation_steps = [
 
             {
                 "text": "Apple",
-                "next step": "MI_CC_13"
+                "next step": "MI_CC_11"
             }, 
 
             {
@@ -216,17 +218,13 @@ account_creation_steps = [
 
         "code": "MI_CC_10",
         "service_name": "Meu INSS",
-        "message": "Certo! Como você prefere baixar o aplicativo?",
+        "message": "Certo! Abaixo, você encontrará um vídeo com o passo a passo para baixar o aplicativo Meu INSS em dispositivos Android.",
+        "video_path": "videos/Baixar_meu_inss_android.mp4",
         "options": [
 
             {
-                "text": "Ir para o aplicativo",
-                "next step": "MI_CC_11"
-            }, 
-
-            {
-                "text": "Ver o passo a passo em vídeo",
-                "next step": "MI_CC_12"
+                "text": "Continuar",
+                "next step": "MI_CC_07"
             }, 
 
             {
@@ -242,7 +240,7 @@ account_creation_steps = [
 
         "code": "MI_CC_11",
         "service_name": "Meu INSS",
-        "message": "Certo! Clique no botão abaixo para encontrar o Meu INSS no seu celular.",
+        "message": "Certo! Abaixo, você encontrará um vídeo com o passo a passo para baixar o aplicativo Meu INSS em dispositivos Apple.",
         "next step": "MI_CC_07"
 
     },
@@ -251,95 +249,44 @@ account_creation_steps = [
 
         "code": "MI_CC_12",
         "service_name": "Meu INSS",
-        "message": "Certo! Como você prefere baixar o aplicativo?",
-        "next step": "MI_CC_07"
+        "message": "Qual nota você daria para este tutorial?",
+        "options": [
+
+            {
+                "text": "Enviar",
+                "next step": "MI_CC_13"
+            }, 
+
+            {
+                "text": "Voltar à pergunta anterior",
+            }, 
+
+
+        ]
 
     },
 
     {
 
         "code": "MI_CC_13",
-        "service_name": "Meu INSS",
-        "message": "Certo! Como você prefere baixar o aplicativo?",
-        "options": [
-
-            {
-                "text": "Ir para o aplicativo",
-                "next step": "MI_CC_14"
-            }, 
-
-            {
-                "text": "Ver o passo a passo em vídeo",
-                "next step": "MI_CC_15"
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            }, 
-
-
-        ]
-
-    },
-
-    {
-
-        "code": "MI_CC_14",
-        "service_name": "Meu INSS",
-        "message": "Certo! Clique no botão abaixo para encontrar o Meu INSS no seu celular.",
-        "next step": "MI_CC_07"
-
-    },
-
-    {
-
-        "code": "MI_CC_15",
-        "service_name": "Meu INSS",
-        "message": "Certo! Como você prefere baixar o aplicativo?",
-        "next step": "MI_CC_07"
-
-    },
-
-    {
-
-        "code": "MI_CC_16",
-        "service_name": "Meu INSS",
-        "message": "Qual nota você daria para este tutorial?",
-        "options": [
-
-            {
-                "text": "Enviar",
-                "next step": "MI_CC_17"
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            }, 
-
-
-        ]
-
-    },
-
-    {
-
-        "code": "MI_CC_17",
         "service_name": "Atende+",
         "message": "Avaliação enviada com sucesso!",
-        "next step": "MI_CC_18"
+        "show_with_next": True,
+        "next step": "MI_CC_14"
 
     },
 
     
     {
 
-        "code": "MI_CC_18",
+        "code": "MI_CC_14",
         "service_name": "Atende+",
         "message": "Obrigado por ajudar a melhorar o Guia Fácil",
         "options": [
 
             {
-                "text": "Voltar à pergunta anterior",
+                "text": "Voltar para a página inicial",
+                "next step": "MENU"
             }, 
 
 
@@ -349,7 +296,7 @@ account_creation_steps = [
 
     {
 
-        "code": "MI_CC_19",
+        "code": "MI_CC_15",
         "service_name": "Meu INSS",
         "message": "Com qual serviço você gostaria de ajuda?",
         "options": [
@@ -376,8 +323,8 @@ account_creation_steps = [
 ]
 
 for documento in account_creation_steps:
-    step.update_one(
+    step.replace_one(
         {"code": documento["code"]},
-        {"$set": documento},
+        documento,
         upsert=True,
     )

@@ -37,7 +37,8 @@ compliment_steps = [
         "options": [
 
             {
-                "text": "Voltar à pergunta anterior",
+                "text": "Voltar para a página inicial",
+                "next step": "MENU"
             },
 
 

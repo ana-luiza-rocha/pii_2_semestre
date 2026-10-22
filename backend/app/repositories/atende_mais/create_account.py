@@ -38,7 +38,8 @@ create_account_steps = [
 
         "code": "AM_CC_02",
         "service_name": "Atende+",
-        "message": "Ótimo! Ao iniciar o vídeo, o site do Atende+ será aberto para você acompanhar o passo a passo. O vídeo continuará aparecendo em um tamanho menor enquanto você utiliza o site.",
+        "message": "Ótimo! Abaixo, você encontrará um vídeo com o passo a passo para criar sua conta no site do Atende+.",
+        "video_path": "videos/Criar_conta_atende_mais.mp4",
         "next step": "AM_CC_03"
 
     },
@@ -82,7 +83,8 @@ create_account_steps = [
             }, 
 
             {
-                "text": "Voltar à pergunta anterior",
+                "text": "Voltar para a página inicial",
+                "next step": "MENU"
             }, 
 
 
@@ -99,7 +101,7 @@ create_account_steps = [
 
             {
                 "text": "Sim, ver tutorial",
-                "next step": "AM_CC_02"
+                "next step": "AM_OFM_01"
             }, 
 
             {
@@ -151,6 +153,7 @@ create_account_steps = [
         "code": "AM_CC_08",
         "service_name": "Atende+",
         "message": "Avaliação enviada com sucesso!",
+        "show_with_next": True,
         "next step": "AM_CC_09"
 
     },
@@ -164,7 +167,8 @@ create_account_steps = [
         "options": [
 
             {
-                "text": "Voltar à pergunta anterior",
+                "text": "Voltar para a página inicial",
+                "next step": "MENU"
             }, 
 
 
