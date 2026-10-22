@@ -43,6 +43,11 @@ function updateCounter() {
 }
 
 function updateStarRating() {
+
+  if (!scoreStars) {
+    return
+  }
+
   const rating = Number(selectedScore);
   for (const button of scoreStars.querySelectorAll("button")) {
     const value = Number(button.dataset.score);
@@ -236,7 +241,7 @@ function startConversation() {
 
 form.onsubmit = sendAnswer;
 comment.oninput = updateCounter;
-scoreStars.addEventListener("click", function (event) {
+scoreStars?.addEventListener("click", function (event) {
   const button = event.target.closest("button[data-score]");
   if (!button || loading) return;
   selectedScore = button.dataset.score;
