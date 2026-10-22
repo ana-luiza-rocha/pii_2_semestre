@@ -3,7 +3,8 @@ const message = document.getElementById("chatbot-message");
 const options = document.getElementById("chatbot-options");
 const form = document.getElementById("chatbot-form");
 const comment = document.getElementById("chatbot-comment");
-const score = document.getElementById("chatbot-score");
+const scoreStars = document.getElementById("chatbot-score-stars");
+const scoreValue = document.getElementById("chatbot-score-value");
 const status = document.getElementById("chatbot-status");
 const retry = document.getElementById("chatbot-retry");
 
@@ -13,6 +14,7 @@ const BASE_URL = "http://127.0.0.1:8000";
 let currentStep = null;
 let stepHistory = [];
 let drafts = {};
+let selectedScore = "";
 let submissionId;
 let sendTarget;
 let loading = false;
@@ -40,12 +42,23 @@ function updateCounter() {
   submissionId = Date.now() + "-" + Math.random();
 }
 
+function updateStarRating() {
+  const rating = Number(selectedScore);
+  for (const button of scoreStars.querySelectorAll("button")) {
+    const value = Number(button.dataset.score);
+    button.textContent = selectedScore && value <= rating ? "★" : "☆";
+    button.setAttribute("aria-pressed", String(value === rating && Boolean(selectedScore)));
+  }
+  scoreValue.textContent = selectedScore
+    ? `Nota: ${selectedScore}/5`
+    : "Escolha de 1 a 5 estrelas";
+}
+
 function showStep() {
-  const stepLink = currentStep.link || (currentStep.code === "AM_OFM_03" ? {
-    text: "Ver postos da SPTrans",
-    subtext: "Abre o site da SPTrans",
-    url: "https://www.sptrans.com.br/encontrar-posto?cat=atende",
-  } : null);
+  const stepVideo = currentStep.video_path || (currentStep.code === "AM_OFM_01"
+    ? "videos/Obter_ficha_medica_atende_mais.mp4"
+    : null);
+  const stepLink = currentStep.link || null;
   message.replaceChildren();
   for (const text of currentStep.messages || [currentStep.message]) {
     const bubble = document.createElement("div");
@@ -67,7 +80,7 @@ function showStep() {
     link.append(title, subtitle);
     message.appendChild(link);
   }
-  showMedia({ ...currentStep, link: stepLink });
+  showMedia({ ...currentStep, video_path: stepVideo, link: stepLink });
   options.replaceChildren();
   sendTarget = null;
 
@@ -78,16 +91,16 @@ function showStep() {
   document.getElementById("score-field").hidden = !isScore;
   comment.disabled = !isComment;
   comment.required = isComment;
-  score.disabled = !isScore;
-  score.required = isScore;
 
   const draft = drafts[currentStep.code] || { comment: "", score: "" };
   comment.value = draft.comment;
-  score.value = draft.score;
+  selectedScore = draft.score;
+  updateStarRating();
   updateCounter();
 
   for (const option of currentStep.options || []) {
     const target = option["next step"];
+    if (option.text === "Continuar" && target === currentStep["next step"]) continue;
     if (option.text.includes("pergunta anterior")) continue;
 
     if (target === "MENU") {
@@ -113,7 +126,10 @@ function showStep() {
       loadStep(currentStep["next step"]);
     });
   }
-  if (stepHistory.length > 1) {
+  const hasHomeOption = (currentStep.options || []).some(function (option) {
+    return option["next step"] === "MENU";
+  });
+  if (stepHistory.length > 1 && !hasHomeOption) {
     createButton("Voltar à pergunta anterior", function () {
       loadStep(stepHistory[stepHistory.length - 2], true);
     });
@@ -124,7 +140,7 @@ function showStep() {
 async function loadStep(code, goingBack = false) {
   if (loading) return;
   if (currentStep) {
-    drafts[currentStep.code] = { comment: comment.value, score: score.value };
+    drafts[currentStep.code] = { comment: comment.value, score: selectedScore };
   }
   setLoading(true);
   status.textContent = "Carregando...";
@@ -164,6 +180,11 @@ async function loadStep(code, goingBack = false) {
 async function sendAnswer(event) {
   event.preventDefault();
   if (loading || !form.reportValidity() || !sendTarget) return;
+  if (currentStep.input_type === "score" && !selectedScore) {
+    status.textContent = "Escolha uma nota de 1 a 5 estrelas.";
+    scoreStars.querySelector("button")?.focus();
+    return;
+  }
 
   const answer = {
     submission_id: submissionId,
@@ -175,7 +196,7 @@ async function sendAnswer(event) {
   if (currentStep.input_type === "comment") {
     answer.comment = comment.value;
   } else {
-    answer.score = Number(score.value);
+    answer.score = Number(selectedScore);
   }
 
   setLoading(true);
@@ -215,5 +236,12 @@ function startConversation() {
 
 form.onsubmit = sendAnswer;
 comment.oninput = updateCounter;
-score.onchange = updateCounter;
+scoreStars.addEventListener("click", function (event) {
+  const button = event.target.closest("button[data-score]");
+  if (!button || loading) return;
+  selectedScore = button.dataset.score;
+  updateStarRating();
+  updateCounter();
+  status.textContent = "";
+});
 startConversation();

@@ -53,15 +53,15 @@
         <p class="contador" id="chatbot-counter">0 / 2000 caracteres</p>
       </div>
       <div id="score-field" hidden>
-        <label for="chatbot-score">Sua nota para o tutorial</label>
-        <select id="chatbot-score" class="caixa-texto">
-          <option value="">Escolha uma nota</option>
-          <option value="1">1 - Muito ruim</option>
-          <option value="2">2 - Ruim</option>
-          <option value="3">3 - Regular</option>
-          <option value="4">4 - Bom</option>
-          <option value="5">5 - Muito bom</option>
-        </select>
+        <span id="chatbot-score-label">Sua nota para o tutorial</span>
+        <div id="chatbot-score-stars" role="group" aria-labelledby="chatbot-score-label">
+          <button type="button" data-score="1" aria-label="1 estrela" aria-pressed="false">☆</button>
+          <button type="button" data-score="2" aria-label="2 estrelas" aria-pressed="false">☆</button>
+          <button type="button" data-score="3" aria-label="3 estrelas" aria-pressed="false">☆</button>
+          <button type="button" data-score="4" aria-label="4 estrelas" aria-pressed="false">☆</button>
+          <button type="button" data-score="5" aria-label="5 estrelas" aria-pressed="false">☆</button>
+          <span id="chatbot-score-value" aria-live="polite">Escolha de 1 a 5 estrelas</span>
+        </div>
       </div>
     </form>
 
