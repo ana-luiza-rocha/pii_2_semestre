@@ -24,7 +24,7 @@ from .db_config import (
     MONGODB_URI
 )
 
-client = MongoClient(MONGODB_URI, timeoutMS=5000)
+client = MongoClient(MONGODB_URI, timeoutMS=55000)
 
 db = client[MONGODB_DB]
 
@@ -36,8 +36,8 @@ def check_connection():
         return True
 
     except PyMongoError as e:
-        print(f"\033[91m{type(e)}\033[00m")
-        print(f"\033[38;2;255;165;0m{e}\033[0m")
+        # print(f"\033[91m{type(e)}\033[00m")
+        # print(f"\033[38;2;255;165;0m{e}\033[0m")
         return False
 
 # praticidade.
