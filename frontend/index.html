@@ -18,6 +18,8 @@
     <strong>Guia Fácil</strong>
     <!-- botoes do cabeçalho -->
     <nav class="botoes">
+      <!-- link "sobre": leva para a página sobre -->
+      <a href="sobre.html" class="sobre">Sobre</a>  
       <!-- botao de diminuir a letra -->
       <button type="button" aria-label="Diminuir letra" data-action="decrease-font">
         <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M17 9h5"/></svg>
@@ -30,16 +32,19 @@
       <button type="button" aria-label="Modo escuro" data-action="toggle-theme" aria-pressed="false">
         <svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>
       </button>
-      <!-- botao da casinha que leva a tela inicial -->
-      <a href="index.html" aria-label="Tela principal" title="Tela principal">
-        <svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4zM10 20v-6h4v6"/></svg>
-      </a>
     </nav>
   </header>
 
     <!-- tela inicial -->
   <main class="tela">
     <h1>Como posso te ajudar hoje?</h1>
+
+    <!-- descrição do site -->
+    <p class="descricao">
+    O Guia Fácil é um assistente que ajuda você a usar serviços públicos pelo celular,
+    com explicações simples e passo a passo.
+    </p>
+
     <p class="subtitulo">Escolha um serviço para começar</p>
 
     <!-- caixa que junta os cartoes e da espaço entre eles -->
@@ -56,6 +61,7 @@
         <!-- seta p direita dentro do cartao -->
         <svg class="seta" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
       </a>
+
       <!-- cartao do meu inss -->
       <a href="conversa.html#meu-inss" class="cartao">
         <span class="icone">
@@ -69,6 +75,18 @@
         <svg class="seta" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
       </a>
 
+      <!-- cartao do cadunico -->
+      <a href="conversa.html#cadunico" class="cartao">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15.5 14.2c3 0 5.5 2 5.5 5"/></svg>
+        </span>
+        <span class="texto">
+          <strong id="nome-cadunico">Carregando...</strong>
+          <small id="descricao-cadunico">Carregando...</small>
+        </span>
+        <!-- seta p direita -->
+        <svg class="seta" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
     </div>
     
     <!-- botao de sugestões e reclamações -->
@@ -78,8 +96,32 @@
     </a>
   </main>
 
+    <!-- botão de voltar ao início, flutuando embaixo da tela -->
+  <nav class="rodape" aria-label="Navegação principal">
+  <a href="index.html" class="rodape-inicio">
+    <span class="rodape-icone">
+      <svg viewBox="0 0 24 24"><path d="M3 11.5L12 4l9 7.5"/><path d="M5.5 10v10h4.5v-6h4v6h4.5V10"/></svg>
+    </span>
+    Início
+  </a>
+  </nav>  
+
   <p id="preferences-status" class="preferences-status" role="status"></p>
   <p id="erro-menu" role="status" style="text-align: center;"></p>
+
+  <!-- libras -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
   <script src="js/menu.js"></script>
+
 </body>
 </html>
