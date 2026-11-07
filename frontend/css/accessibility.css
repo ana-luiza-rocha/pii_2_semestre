@@ -54,9 +54,10 @@ body {
   color: #c1d3e5;
 }
 
+/* troquei cor fundo do cartao */
 [data-theme="dark"] .cartao,
 [data-theme="dark"] .balao {
-  background: #214971;
+  background: #3C84CC;
   color: #edf4ff;
 }
 
@@ -98,4 +99,44 @@ body {
 
 [data-theme="dark"] :focus-visible {
   outline-color: #ffd375;
+}
+
+/* ----- NOVO ---- */
+
+/* botão de início no modo escuro */
+[data-theme="dark"] .rodape-inicio {
+  border-color: #a9d4ff;
+  background: #1c2c40;
+  color: #edf4ff;
+}
+
+/* cartões da página sobre no modo escuro */
+[data-theme="dark"] .info {
+  background: #1c2c40;
+}
+
+[data-theme="dark"] .info h2 {
+  color: #a9d4ff;
+}
+
+[data-theme="dark"] .info.aviso {
+  border-color: #cfb568;
+  background: #423b26;
+}
+
+[data-theme="dark"] .info.aviso h2 {
+  color: #fff3cf;
+}
+
+/* círculo dos ícones no modo escuro */
+[data-theme="dark"] .icone {
+  background: #101b29;
+}
+
+[data-theme="dark"] .icone svg {
+  stroke: #a9d4ff;
+}
+/* texto que explica o que é o site: quase branco no modo escuro */
+[data-theme="dark"] .descricao {
+  color: #f5f9ff;
 }
