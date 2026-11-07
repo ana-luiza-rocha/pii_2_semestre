@@ -9,30 +9,35 @@ body {
   background: #e3f2fd;
   color: #0d2b45;
   font-family: "Trebuchet MS", Arial, sans-serif;
-  font-size: 17px;
+  font-size: 1.0625rem; 
 }
 
 /* coisas do cabeçalho: */
 
-/* cabeçalho azul no topo, ocupa a largura toda da tela */
+/* tudo fica numa linha só, sem quebrar, não importa o tamanho da letra */
 .topo {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   width: 100%;
   padding: 14px 24px;
   background: #1565c0;
   color: white;
 }
 
-/* nome guia fácil no cabeçalho */
+/* nome guia fácil no cabeçalho, tamanho fixo (não cresce com a letra) */
 .topo strong {
   font-size: 25px;
+  white-space: nowrap;
 }
 
-/* grupo dos botões redondos, com espaço entre eles */
+/* grupo dos botões redondos, sempre um do lado do outro */
 .botoes {
   display: flex;
+  flex-wrap: nowrap;
+  flex: none;
   gap: 10px;
 }
 
@@ -41,6 +46,7 @@ body {
 .botoes a {
   display: grid;
   place-items: center;
+  flex: none; /* o botão não é espremido nem esticado */
   width: 36px;
   height: 36px;
   border: 0;
@@ -66,6 +72,19 @@ body {
   stroke-linejoin: round;
 }
 
+/* link "sobre" no cabeçalho, tamanho fixo */
+.botoes .sobre {
+  width: auto;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: #0d47a1;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 /* fim do cabeçalho */
 
 
@@ -73,7 +92,7 @@ body {
 .tela {
   max-width: 420px;
   margin: 0 auto;
-  padding: 24px 18px 40px;
+  padding: 24px 18px 7em; /* o espaço para o botão de início cresce com a letra */
 }
 
 /* círculo branco que fica atrás dos ícones dos cartões e das opções lá dentro de conversa*/
@@ -108,4 +127,97 @@ body {
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* botão de início, embaixo da tela: */
+
+/* área fixa embaixo da tela, sem fundo: só o botão flutua */
+.rodape {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px 18px;
+  pointer-events: none;
+}
+
+/* botão branco com borda azul e sombra suave */
+.rodape-inicio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 6px 28px 6px 8px;
+  border: 2px solid #1565c0;
+  border-radius: 999px;
+  background: white;
+  box-shadow: 0 6px 16px rgba(21, 101, 192, 0.3);
+  color: #0d47a1;
+  font-size: 1.05em;
+  font-weight: bold;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+/* ao passar o mouse, o botão fica azul claro */
+.rodape-inicio:hover {
+  background: #90caf9;
+}
+
+/* círculo azul que guarda o ícone da casa */
+.rodape-icone {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #3C84CC;
+}
+
+/* desenho da casa, branco dentro do círculo */
+.rodape-icone svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: white;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* fim do botão de início */
+
+
+/* em telas bem pequenas, o cabeçalho encolhe um pouco para continuar numa linha só */
+@media (max-width: 360px) {
+  .topo {
+    padding: 12px 14px;
+  }
+
+  .topo strong {
+    font-size: 20px;
+  }
+
+  .botoes {
+    gap: 6px;
+  }
+
+  .botoes button,
+  .botoes a {
+    width: 32px;
+    height: 32px;
+  }
+
+  .botoes svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .botoes .sobre {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
 }
