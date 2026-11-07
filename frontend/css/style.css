@@ -1,6 +1,6 @@
 /* título grande da tela inicial */
 h1 {
-  margin: 48px 0 56px;
+  margin: 48px 0 16px;
   color: #1565c0;
   font-size: 2.9em;
   line-height: 1.1;
@@ -23,7 +23,7 @@ h1 {
   gap: 28px;
 }
 
-/* cartão de cada serviço (atende+ e meu inss) */
+/* cartão de cada serviço */
 .cartao {
   display: flex;
   align-items: center;
@@ -276,4 +276,61 @@ h1 {
   color: #355a78;
   font-size: 0.85em;
   line-height: 1.4;
+}
+/* -----NOVO------ */
+.descricao {
+  margin: 0 0 40px;
+  color: #000;
+  font-size: 0.95em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* cartão de informação da página sobre */
+.info {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 20px 18px;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 6px 14px rgba(21, 101, 192, 0.15);
+}
+
+/* círculo do ícone dentro do cartão, azul clarinho */
+.info .icone {
+  width: 48px;
+  height: 48px;
+  background: #e3f2fd;
+}
+
+/* título de cada cartão */
+.info h2 {
+  margin: 0 0 6px;
+  color: #1565c0;
+  font-size: 1.15em;
+}
+
+/* texto de cada cartão */
+.info p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.55;
+}
+
+/* cartão do aviso: amarelo clarinho, para chamar atenção */
+.info.aviso {
+  border: 2px solid #f5dc8e;
+  background: #fff4cc;
+  box-shadow: none;
+}
+
+/* círculo do ícone no aviso fica branco */
+.info.aviso .icone {
+  background: white;
+}
+
+/* título do aviso em azul escuro, para ter mais contraste no amarelo */
+.info.aviso h2 {
+  color: #0d2b45;
 }
