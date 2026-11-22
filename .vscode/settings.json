@@ -1,0 +1,8 @@
+{
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/cursor/**": true,
+    "**/frontend/videos/**": true
+  },
+  "search.followSymlinks": false
+}

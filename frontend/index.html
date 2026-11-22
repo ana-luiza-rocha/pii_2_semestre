@@ -17,22 +17,7 @@
   <header class="topo">
     <strong>Guia Fácil</strong>
     <!-- botoes do cabeçalho -->
-    <nav class="botoes">
-      <!-- link "sobre": leva para a página sobre -->
-      <a href="sobre.html" class="sobre">Sobre</a>  
-      <!-- botao de diminuir a letra -->
-      <button type="button" aria-label="Diminuir letra" data-action="decrease-font">
-        <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M17 9h5"/></svg>
-      </button>
-      <!-- botao de aumentar a letra -->
-      <button type="button" aria-label="Aumentar letra" data-action="increase-font">
-        <svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M19.5 6.5v5M17 9h5"/></svg>
-      </button>
-      <!-- botao modo escuro -->
-      <button type="button" aria-label="Modo escuro" data-action="toggle-theme" aria-pressed="false">
-        <svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>
-      </button>
-    </nav>
+    <nav class="botoes"><a href="sobre.html" class="sobre">Sobre</a></nav>
   </header>
 
     <!-- tela inicial -->
@@ -109,17 +94,49 @@
   <p id="preferences-status" class="preferences-status" role="status"></p>
   <p id="erro-menu" role="status" style="text-align: center;"></p>
 
-  <!-- libras -->
-<div vw class="enabled">
-  <div vw-access-button class="active"></div>
-  <div vw-plugin-wrapper>
-    <div class="vw-plugin-top-wrapper"></div>
+  <!-- menu de acessibilidade (some e aparece ao clicar no botão azul) -->
+  <div vw class="enabled">
+    <div class="accessibility-widget">
+      <div id="accessibility-options" class="accessibility-options" hidden>
+        <div class="accessibility-item">
+          <button type="button" aria-label="Diminuir letra" data-action="decrease-font">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19l5-13 5 13M5 14h6M17 9h5"/></svg>
+          </button>
+          <span>Diminuir letra</span>
+        </div>
+        <div class="accessibility-item">
+          <button type="button" aria-label="Aumentar letra" data-action="increase-font">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19l5-13 5 13M5 14h6M19.5 6.5v5M17 9h5"/></svg>
+          </button>
+          <span>Aumentar letra</span>
+        </div>
+        <div class="accessibility-item">
+          <button type="button" aria-label="Modo escuro" data-action="toggle-theme" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>
+          </button>
+          <span id="theme-description">Ativar modo escuro</span>
+        </div>
+        <div class="accessibility-item">
+          <button type="button" data-action="open-libras" aria-label="Traduzir para Libras">
+            <svg viewBox="0 0 32 26" aria-hidden="true"><path d="M4 16V9a1.3 1.3 0 0 1 2.6 0v4V6a1.3 1.3 0 0 1 2.6 0v7V7.5a1.3 1.3 0 0 1 2.6 0V13V10a1.3 1.3 0 0 1 2.6 0v7a5 5 0 0 1-5 5h-.6a5 5 0 0 1-4.3-2.5l-1.2-2A1.3 1.3 0 0 1 4 16z"/><path d="M4 16V9a1.3 1.3 0 0 1 2.6 0v4V6a1.3 1.3 0 0 1 2.6 0v7V7.5a1.3 1.3 0 0 1 2.6 0V13V10a1.3 1.3 0 0 1 2.6 0v7a5 5 0 0 1-5 5h-.6a5 5 0 0 1-4.3-2.5l-1.2-2A1.3 1.3 0 0 1 4 16z" transform="translate(32 0) scale(-1 1)"/></svg>
+          </button>
+          <span>Traduzir para Libras</span>
+        </div>
+      </div>
+      <button type="button" class="accessibility-toggle" data-action="toggle-accessibility" aria-label="Abrir opções de acessibilidade" aria-expanded="false" aria-controls="accessibility-options">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7" r="1"/><path d="M5 10h14M12 10v9m0-5-4 5m4-5 4 5"/></svg>
+      </button>
+    </div>
+    <!-- ícone padrão do VLibras: fica na página, mas escondido no CSS -->
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
   </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-  new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
 
   <script src="js/menu.js"></script>
 
