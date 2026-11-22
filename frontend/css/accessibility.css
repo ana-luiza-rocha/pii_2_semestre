@@ -214,13 +214,6 @@ body {
 
 /* ----- NOVO ---- */
 
-/* botão de início no modo escuro */
-[data-theme="dark"] .rodape-inicio {
-  border-color: #a9d4ff;
-  background: #1c2c40;
-  color: #edf4ff;
-}
-
 /* cartões da página sobre no modo escuro */
 [data-theme="dark"] .info {
   background: #1c2c40;
