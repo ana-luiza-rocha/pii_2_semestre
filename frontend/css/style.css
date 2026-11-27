@@ -34,7 +34,7 @@ h1 {
 }
 
 .cartao.card {
-  border: 0;
+  border: 2px solid transparent;
 }
 
 .cartao .texto {
@@ -54,13 +54,7 @@ h1 {
 
 .cartao:hover,
 .cartao:active {
-  background: #0d47a1;
-  color: white;
-}
-
-.cartao:hover .seta,
-.cartao:active .seta {
-  stroke: white;
+  border-color: #1565c0;
 }
 
 .bloco {
@@ -163,6 +157,12 @@ h1 {
   color: #0d2b45;
   font: inherit;
   resize: none;
+}
+
+.caixa-texto:focus,
+.caixa-texto:focus-visible {
+  outline: none;
+  border-color: #1565c0;
 }
 
 .contador {
@@ -302,6 +302,30 @@ main.tela:has(> .info) {
   width: 48px;
   height: 48px;
   background: white;
+}
+
+.info.aviso {
+  border: 2px solid #e6c15a;
+  background: #fff4cc;
+  box-shadow: none;
+}
+
+.info.aviso .icone,
+.balao.aviso .icone {
+  background: white;
+}
+
+.info.aviso .icone svg,
+.balao.aviso .icone svg {
+  stroke-width: 2.5;
+}
+
+.info.aviso .forma,
+.balao.aviso .forma,
+.info.aviso .marca,
+.balao.aviso .marca {
+  fill: none;
+  stroke: #8a6500;
 }
 
 .info h2 {
