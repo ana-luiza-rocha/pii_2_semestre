@@ -10,7 +10,7 @@ h1 {
 .subtitulo {
   margin: 0 0 12px;
   color: #355a78;
-  font-size: 0.9em;
+  font-size: 1.2em;
   text-align: center;
 }
 
@@ -44,12 +44,13 @@ h1 {
 
 .cartao small {
   display: block;
+  font-size: 1.1em;
 }
 
 .cartao strong {
   display: block;
   margin-bottom: 8px;
-  font-size: 1.25em;
+  font-size: 1.6em;
 }
 
 .cartao:hover,
@@ -253,7 +254,7 @@ h1 {
   max-width: 40rem;
   margin: 0 auto 32px;
   color: #355a78;
-  font-size: 1em;
+  font-size: 1.35em;
   font-weight: normal;
   line-height: 1.5;
   text-align: center;
