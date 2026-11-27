@@ -36,6 +36,23 @@ body {
   color: white;
 }
 
+.topo .sobre,
+.topo .sobre:visited {
+  padding: 6px 14px;
+  border: 2px solid white;
+  border-radius: 999px;
+  background: transparent;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.topo .sobre:hover {
+  background: white;
+  color: #1565c0;
+}
+
 .botoes {
   display: flex;
   flex-wrap: nowrap;
