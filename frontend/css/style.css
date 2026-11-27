@@ -131,17 +131,6 @@ h1 {
   cursor: pointer;
 }
 
-.opcao .icone {
-  width: 36px;
-  height: 36px;
-  background: white;
-}
-
-.opcao .icone svg {
-  width: 20px;
-  height: 20px;
-}
-
 .bloco:has(.modal:target) {
   display: block;
 }
@@ -317,15 +306,9 @@ main.tela:has(> .info) {
 
 .info.aviso .icone svg,
 .balao.aviso .icone svg {
-  stroke-width: 2.5;
-}
-
-.info.aviso .forma,
-.balao.aviso .forma,
-.info.aviso .marca,
-.balao.aviso .marca {
   fill: none;
   stroke: #8a6500;
+  stroke-width: 2.5;
 }
 
 .info h2 {
