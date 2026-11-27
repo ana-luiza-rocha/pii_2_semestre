@@ -55,14 +55,20 @@ async function carregarMenu() {
     document.getElementById("nome-inss").textContent = servicos[1];
     document.getElementById("descricao-atende").textContent = descricoes[0];
     document.getElementById("descricao-inss").textContent = descricoes[1];
+    if (servicos[2] && descricoes[2]) {
+      document.getElementById("nome-cadunico").textContent = servicos[2];
+      document.getElementById("descricao-cadunico").textContent = descricoes[2];
+    }
     carregado = true;
 
   } catch (erro) {
     console.error(erro);
     document.getElementById("nome-atende").textContent = "Nome indisponível";
     document.getElementById("nome-inss").textContent = "Nome indisponível";
+    document.getElementById("nome-cadunico").textContent = "Nome indisponível";
     document.getElementById("descricao-atende").textContent = "Descrição indisponível";
     document.getElementById("descricao-inss").textContent = "Descrição indisponível";
+    document.getElementById("descricao-cadunico").textContent = "Descrição indisponível";
     document.getElementById("erro-menu").textContent =
       "Não foi possível carregar o menu. Verifique se a API está ligada e atualize a página.";
   }
