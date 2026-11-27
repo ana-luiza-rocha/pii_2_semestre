@@ -7,14 +7,14 @@ const accessibilityToggle = document.querySelector('[data-action="toggle-accessi
 const accessibilityOptions = document.getElementById("accessibility-options");
 const librasButton = document.querySelector('[data-action="open-libras"]');
 
-let fontSize = 17;
+let fontSize = 100;
 let theme = "light";
 
 try {
   const saved = JSON.parse(localStorage.getItem("guia-preferences"));
 
   if (saved) {
-    if (Number.isInteger(saved.font_size) && saved.font_size >= 15 && saved.font_size <= 25) {
+    if (Number.isInteger(saved.font_size) && saved.font_size >= 90 && saved.font_size <= 140) {
       fontSize = saved.font_size;
     }
     if (saved.theme === "light" || saved.theme === "dark") {
@@ -26,10 +26,10 @@ try {
 }
 
 function applyPreferences() {
-  document.documentElement.style.setProperty("--font-size", fontSize + "px");
+  document.documentElement.style.setProperty("--font-size", fontSize + "%");
   document.documentElement.dataset.theme = theme;
-  decreaseButton.disabled = fontSize === 15;
-  increaseButton.disabled = fontSize === 25;
+  decreaseButton.disabled = fontSize === 90;
+  increaseButton.disabled = fontSize === 140;
   themeButton.setAttribute("aria-pressed", String(theme === "dark"));
 
   if (theme === "dark") {
@@ -56,12 +56,12 @@ function savePreferences() {
 }
 
 decreaseButton.addEventListener("click", () => {
-  fontSize = Math.max(15, fontSize - 2);
+  fontSize = Math.max(90, fontSize - 10);
   savePreferences();
 });
 
 increaseButton.addEventListener("click", () => {
-  fontSize = Math.min(25, fontSize + 2);
+  fontSize = Math.min(140, fontSize + 10);
   savePreferences();
 });
 

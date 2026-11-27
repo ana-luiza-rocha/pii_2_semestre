@@ -8,7 +8,7 @@ body {
   background: #e3f2fd;
   color: #0d2b45;
   font-family: "Trebuchet MS", Arial, sans-serif;
-  font-size: 1.0625rem;
+  font-size: 100%;
 }
 
 .topo {
@@ -31,7 +31,7 @@ body {
 }
 
 .topo strong {
-  font-size: 25px;
+  font-size: 1.47em;
   white-space: nowrap;
   color: white;
 }
@@ -43,7 +43,7 @@ body {
   border-radius: 999px;
   background: transparent;
   color: white;
-  font-size: 15px;
+  font-size: 0.9em;
   font-weight: bold;
   text-decoration: none;
 }
@@ -94,7 +94,7 @@ body {
   padding: 0 14px;
   border-radius: 999px;
   color: #0d47a1;
-  font-size: 15px;
+  font-size: 0.9em;
   font-weight: bold;
   text-decoration: none;
   white-space: nowrap;
@@ -166,7 +166,7 @@ body {
   }
 
   .topo strong {
-    font-size: 20px;
+    font-size: 1.2em;
   }
 
   .botoes {
@@ -187,7 +187,7 @@ body {
   .botoes .sobre {
     height: 32px;
     padding: 0 10px;
-    font-size: 13px;
+    font-size: 0.8em;
   }
 
   .icone {
