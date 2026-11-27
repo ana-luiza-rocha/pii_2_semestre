@@ -19,13 +19,11 @@ body {
 
 [vw] .accessibility-widget {
   position: fixed;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
   z-index: 1000;
   display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
+  align-items: flex-end;
   gap: 10px;
 }
 
@@ -76,12 +74,10 @@ body {
   color: #0d2b45;
 }
 
-/* botão novo do VLibras (versão atual do plugin) */
 #vlibras-access-wrapper {
   display: none !important;
 }
 
-/* botão antigo do VLibras (se ainda existir no HTML) */
 [vw-access-button] {
   display: none !important;
 }
@@ -124,7 +120,17 @@ body {
 
 @media (max-width: 480px) {
   [vw] .accessibility-widget {
-    left: 12px;
+    right: max(12px, env(safe-area-inset-right));
+  }
+
+  [vw] .accessibility-options {
+    grid-template-columns: repeat(2, minmax(0, 64px));
+  }
+}
+
+@media (max-width: 360px) {
+  .topo strong {
+    font-size: 1.2em;
   }
 }
 
@@ -134,9 +140,9 @@ body {
 }
 
 .preferences-status {
-  max-width: 420px;
+  width: min(100%, 1080px);
   margin: 12px auto;
-  padding: 0 18px;
+  padding: 0 18px 1rem;
   text-align: center;
 }
 
@@ -153,7 +159,10 @@ body {
   background: #163d68;
 }
 
-[data-theme="dark"] h1,
+[data-theme="dark"] h1 {
+  color: #ffffff;
+}
+
 [data-theme="dark"] .etiqueta,
 [data-theme="dark"] .sugestoes {
   color: #a9d4ff;
@@ -165,7 +174,6 @@ body {
   color: #c1d3e5;
 }
 
-/* troquei cor fundo do cartao */
 [data-theme="dark"] .cartao,
 [data-theme="dark"] .balao {
   background: #3C84CC;
@@ -212,9 +220,6 @@ body {
   outline-color: #ffd375;
 }
 
-/* ----- NOVO ---- */
-
-/* cartões da página sobre no modo escuro */
 [data-theme="dark"] .info {
   background: #1c2c40;
 }
@@ -232,7 +237,6 @@ body {
   color: #fff3cf;
 }
 
-/* círculo dos ícones no modo escuro */
 [data-theme="dark"] .icone {
   background: #101b29;
 }
@@ -240,7 +244,6 @@ body {
 [data-theme="dark"] .icone svg {
   stroke: #a9d4ff;
 }
-/* texto que explica o que é o site: quase branco no modo escuro */
 [data-theme="dark"] .descricao {
-  color: #f5f9ff;
+  color: #c1d3e5;
 }

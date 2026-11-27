@@ -5,7 +5,7 @@ var carregado = false;
 
 function timerInicial() {
   let tempoEsperaDesejavelCarregamento = 3;
-  let tempoMaxCarregamento = 55 + tempoEsperaDesejavelCarregamento; // segundos
+  let tempoMaxCarregamento = 55 + tempoEsperaDesejavelCarregamento;
   let tempoRestante = tempoMaxCarregamento;
 
   const timer = setInterval(() => {
@@ -29,7 +29,7 @@ function timerInicial() {
       clearInterval(timer)
     }
 
-  }, 1000) // 1000 milisegundos (1 segundo)
+  }, 1000)
 }
 
 async function carregarMenu() {

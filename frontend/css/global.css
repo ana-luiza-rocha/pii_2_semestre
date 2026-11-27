@@ -2,19 +2,15 @@
   box-sizing: border-box;
 }
 
-/* configurações gerais da página inteira */
 body {
   min-height: 100vh;
   margin: 0;
   background: #e3f2fd;
   color: #0d2b45;
   font-family: "Trebuchet MS", Arial, sans-serif;
-  font-size: 1.0625rem; 
+  font-size: 1.0625rem;
 }
 
-/* coisas do cabeçalho: */
-
-/* tudo fica numa linha só, sem quebrar, não importa o tamanho da letra */
 .topo {
   display: flex;
   flex-wrap: nowrap;
@@ -27,7 +23,6 @@ body {
   color: white;
 }
 
-/* nome guia fácil no cabeçalho (link, mas com a mesma cor de antes) */
 .topo .inicio,
 .topo .inicio:visited,
 .topo .inicio:hover {
@@ -41,7 +36,6 @@ body {
   color: white;
 }
 
-/* grupo dos botões redondos, sempre um do lado do outro */
 .botoes {
   display: flex;
   flex-wrap: nowrap;
@@ -49,12 +43,11 @@ body {
   gap: 10px;
 }
 
-/* círculo branco de cada botão do cabeçalho */
 .botoes button,
 .botoes a {
   display: grid;
   place-items: center;
-  flex: none; /* o botão não é espremido nem esticado */
+  flex: none;
   width: 36px;
   height: 36px;
   border: 0;
@@ -63,13 +56,11 @@ body {
   cursor: pointer;
 }
 
-/* qnd passa o mouse, o círculo fica azul claro */
 .botoes button:hover,
 .botoes a:hover {
   background: #90caf9;
 }
 
-/* ícone dentro dos botões do cabeçalho */
 .botoes svg {
   width: 20px;
   height: 20px;
@@ -80,7 +71,6 @@ body {
   stroke-linejoin: round;
 }
 
-/* link "sobre" no cabeçalho, tamanho fixo */
 .botoes .sobre {
   width: auto;
   height: 36px;
@@ -93,17 +83,35 @@ body {
   white-space: nowrap;
 }
 
-/* fim do cabeçalho */
-
-
-/* área do conteúdo do inicio, estreita e centralizada */
 .tela {
-  max-width: 420px;
+  width: 100%;
+  max-width: 440px;
   margin: 0 auto;
-  padding: 24px 18px 2em;
+  padding: 24px 18px 6rem;
 }
 
-/* círculo branco que fica atrás dos ícones dos cartões e das opções lá dentro de conversa*/
+@media (min-width: 600px) {
+  .tela {
+    max-width: 560px;
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .tela {
+    max-width: 1080px;
+    padding: 40px 28px 4rem;
+  }
+
+  #chatbot.tela {
+    max-width: 720px;
+  }
+
+  .topo {
+    padding: 16px 40px;
+  }
+}
+
 .icone {
   display: grid;
   place-items: center;
@@ -114,7 +122,6 @@ body {
   background: white;
 }
 
-/* ícone dentro do círculo */
 .icone svg {
   width: 28px;
   height: 28px;
@@ -125,7 +132,6 @@ body {
   stroke-linejoin: round;
 }
 
-/* seta para a direita dos cartões e das opções */
 .seta {
   flex: none;
   width: 20px;
@@ -137,7 +143,6 @@ body {
   stroke-linejoin: round;
 }
 
-/* em telas bem pequenas, o cabeçalho encolhe um pouco para continuar numa linha só */
 @media (max-width: 360px) {
   .topo {
     padding: 12px 14px;
@@ -166,5 +171,15 @@ body {
     height: 32px;
     padding: 0 10px;
     font-size: 13px;
+  }
+
+  .icone {
+    width: 44px;
+    height: 44px;
+  }
+
+  .icone svg {
+    width: 22px;
+    height: 22px;
   }
 }
