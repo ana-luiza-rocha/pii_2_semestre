@@ -28,7 +28,7 @@ function showMedia(step) {
   if (websiteUrl && !step.link) {
     const link = document.createElement("a");
     link.className = "opcao";
-    link.textContent = "Abrir site em outra aba";
+    montarOpcao(link, "Abrir site em outra aba");
     link.href = websiteUrl;
     link.target = "_blank";
     link.rel = "noopener noreferrer";

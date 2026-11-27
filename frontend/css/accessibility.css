@@ -126,7 +126,7 @@ body {
 
 .accessibility-widget .accessibility-toggle {
   flex-shrink: 0;
-  color: white;
+  color: #000000;
 }
 
 .accessibility-widget .accessibility-toggle .bola {
@@ -284,16 +284,12 @@ body {
   background: white;
 }
 
-[data-theme="dark"] .info.aviso .forma,
-[data-theme="dark"] .balao.aviso .forma,
-[data-theme="dark"] .info.aviso .marca,
-[data-theme="dark"] .balao.aviso .marca {
-  fill: none;
-  stroke: #8a6500;
-}
-
 [data-theme="dark"] .icone {
   background: #03060d;
+}
+
+[data-theme="dark"] .accessibility-widget .accessibility-toggle {
+  color: #ffffff;
 }
 
 [data-theme="dark"] .accessibility-widget .accessibility-toggle .bola {

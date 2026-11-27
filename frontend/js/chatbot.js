@@ -21,11 +21,83 @@ let submissionId;
 let sendTarget;
 let loading = false;
 
+function desenhoDaOpcao(text) {
+  const frase = text.toLowerCase();
+  if (frase.indexOf("página inicial") !== -1) {
+    return "M4 11 12 4l8 7v9H4z";
+  }
+  if (frase.indexOf("voltar") !== -1) {
+    return "M15 6l-6 6 6 6";
+  }
+  if (frase.indexOf("não sei") !== -1) {
+    return "M9.5 9a2.5 2.5 0 1 1 3.2 2.4C12 12.6 12 13.2 12 15M12 18.5v.01";
+  }
+  if (frase.indexOf("sim") === 0) {
+    return "M5 12.5 10 17.5 20 7";
+  }
+  if (frase.indexOf("não") !== -1) {
+    return "M7 7l10 10M17 7 7 17";
+  }
+  if (frase.indexOf("sugestão") !== -1) {
+    return "M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11c.6.8 1 1.5 1 2h4c0-.5.4-1.2 1-2a6 6 0 0 0-3-11z";
+  }
+  if (frase.indexOf("reclama") !== -1) {
+    return "M12 4a8 8 0 1 0 .01 0zM12 8v5M12 16.5v.01";
+  }
+  if (frase.indexOf("elogio") !== -1) {
+    return "M12 20s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z";
+  }
+  if (frase.indexOf("avaliar") !== -1) {
+    return "M12 3.5l2.4 5 5.5.8-4 3.9.9 5.5L12 16.2 7.2 18.7l.9-5.5-4-3.9 5.5-.8z";
+  }
+  if (frase.indexOf("criar") !== -1) {
+    return "M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM5 20a7 7 0 0 1 14 0";
+  }
+  if (frase.indexOf("ficha") !== -1) {
+    return "M7 3h7l5 5v13H7zM14 3v5h5";
+  }
+  if (frase.indexOf("benefício") !== -1 || frase.indexOf("consultar") !== -1) {
+    return "M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM16.5 16.5 21 21";
+  }
+  if (frase.indexOf("android") !== -1 || frase.indexOf("apple") !== -1) {
+    return "M8 3.5h8a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1zM11 18.5h2";
+  }
+  if (frase.indexOf("continuar") !== -1 || frase.indexOf("enviar") !== -1) {
+    return "M5 12h14M13 6l6 6-6 6";
+  }
+  if (frase.indexOf("abrir") !== -1) {
+    return "M14 5h5v5M19 5l-8 8M10 7H6v12h12v-4";
+  }
+  if (frase.indexOf("tentar") !== -1) {
+    return "M20 12a8 8 0 1 1-2.2-5.5M20 4v5h-5";
+  }
+  return "M5 8h14M5 12h14M5 16h14";
+}
+
+function montarOpcao(button, text) {
+  const icone = document.createElement("span");
+  icone.className = "icone";
+  icone.setAttribute("aria-hidden", "true");
+  icone.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="' + desenhoDaOpcao(text) + '"/></svg>';
+  const texto = document.createElement("span");
+  texto.className = "texto";
+  texto.textContent = text;
+  if (text.toLowerCase().indexOf("pergunta anterior") !== -1) {
+    button.replaceChildren(icone, texto);
+    return;
+  }
+  const seta = document.createElement("span");
+  seta.className = "sem-leitura";
+  seta.setAttribute("aria-hidden", "true");
+  seta.innerHTML = '<svg class="seta" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>';
+  button.replaceChildren(icone, texto, seta);
+}
+
 function createButton(text, action) {
   const button = document.createElement("button");
   button.type = "button";
   button.className = "opcao";
-  button.textContent = text;
+  montarOpcao(button, text);
   button.onclick = action;
   options.appendChild(button);
   return button;
@@ -348,4 +420,5 @@ for (const botao of botoesNota) {
     scoreAviso.hidden = true;
   };
 }
+montarOpcao(retry, "Tentar novamente");
 startConversation();
