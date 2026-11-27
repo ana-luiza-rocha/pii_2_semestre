@@ -12,6 +12,9 @@ body {
 }
 
 .topo {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
