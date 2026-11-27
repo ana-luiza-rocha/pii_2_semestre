@@ -30,13 +30,9 @@ function applyPreferences() {
   document.documentElement.dataset.theme = theme;
   decreaseButton.disabled = fontSize === 90;
   increaseButton.disabled = fontSize === 140;
-  themeButton.setAttribute("aria-pressed", String(theme === "dark"));
-
   if (theme === "dark") {
-    themeButton.setAttribute("aria-label", "Modo claro");
     themeDescription.textContent = "Ativar modo claro";
   } else {
-    themeButton.setAttribute("aria-label", "Modo escuro");
     themeDescription.textContent = "Ativar modo escuro";
   }
 }

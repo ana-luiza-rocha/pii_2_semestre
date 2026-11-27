@@ -52,7 +52,7 @@ function updateStarRating() {
   const rating = Number(selectedScore);
   for (const button of scoreStars.querySelectorAll("button")) {
     const value = Number(button.dataset.score);
-    button.textContent = selectedScore && value <= rating ? "★" : "☆";
+    button.querySelector("span").textContent = selectedScore && value <= rating ? "★" : "☆";
     button.setAttribute("aria-pressed", String(value === rating && Boolean(selectedScore)));
   }
   scoreValue.textContent = selectedScore

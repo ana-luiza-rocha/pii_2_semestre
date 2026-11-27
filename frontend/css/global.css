@@ -152,6 +152,12 @@ body {
   stroke-linejoin: round;
 }
 
+.sem-leitura {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+
 .seta {
   flex: none;
   width: 20px;

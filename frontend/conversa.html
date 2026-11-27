@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Guia Fácil - Conversa</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=31">
-  <link rel="stylesheet" href="css/global.css?v=31">
-  <link rel="stylesheet" href="css/accessibility.css?v=31">
-  <script src="js/accessibility.js?v=31" defer></script>
-  <link rel="stylesheet" href="css/chatbot.css?v=31">
-  <script src="js/chatbot-media.js?v=31" defer></script>
-  <script src="js/chatbot.js?v=31" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=35">
+  <link rel="stylesheet" href="css/global.css?v=35">
+  <link rel="stylesheet" href="css/accessibility.css?v=35">
+  <script src="js/accessibility.js?v=35" defer></script>
+  <link rel="stylesheet" href="css/chatbot.css?v=35">
+  <script src="js/chatbot-media.js?v=35" defer></script>
+  <script src="js/chatbot.js?v=35" defer></script>
 
 </head>
 <body>
+
+  <a class="pular" href="#chatbot">Pular para o conteúdo</a>
 
   <header class="topo navbar">
     <div class="container-fluid d-flex justify-content-between align-items-center">
@@ -24,7 +26,7 @@
   </header>
 
   <main class="tela container" id="chatbot" data-service="atende">
-    <div id="chatbot-message" tabindex="-1">
+    <div id="chatbot-message" tabindex="-1" aria-live="polite">
       <div class="balao">Carregando...</div>
     </div>
     <div id="chatbot-media"></div>
@@ -38,11 +40,11 @@
       <div id="score-field" hidden>
         <span id="chatbot-score-label">Sua nota para o tutorial</span>
         <div id="chatbot-score-stars" role="group" aria-labelledby="chatbot-score-label">
-          <button type="button" data-score="1" aria-label="1 estrela" aria-pressed="false">☆</button>
-          <button type="button" data-score="2" aria-label="2 estrelas" aria-pressed="false">☆</button>
-          <button type="button" data-score="3" aria-label="3 estrelas" aria-pressed="false">☆</button>
-          <button type="button" data-score="4" aria-label="4 estrelas" aria-pressed="false">☆</button>
-          <button type="button" data-score="5" aria-label="5 estrelas" aria-pressed="false">☆</button>
+          <button type="button" data-score="1" aria-pressed="false"><span aria-hidden="true">☆</span> 1 estrela</button>
+          <button type="button" data-score="2" aria-pressed="false"><span aria-hidden="true">☆</span> 2 estrelas</button>
+          <button type="button" data-score="3" aria-pressed="false"><span aria-hidden="true">☆</span> 3 estrelas</button>
+          <button type="button" data-score="4" aria-pressed="false"><span aria-hidden="true">☆</span> 4 estrelas</button>
+          <button type="button" data-score="5" aria-pressed="false"><span aria-hidden="true">☆</span> 5 estrelas</button>
           <span id="chatbot-score-value" aria-live="polite">Escolha de 1 a 5 estrelas</span>
         </div>
       </div>
@@ -58,28 +60,25 @@
   <div class="accessibility-widget">
     <div id="accessibility-options" class="accessibility-options" hidden>
       <div class="accessibility-item">
-        <button type="button" aria-label="Diminuir letra" data-action="decrease-font"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19l5-13 5 13M5 14h6M17 9h5"/></svg></button>
-        <span>Diminuir letra</span>
+        <button type="button" data-action="decrease-font"><span class="bola" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M17 9h5"/></svg></span>Diminuir letra</button>
       </div>
       <div class="accessibility-item">
-        <button type="button" aria-label="Aumentar letra" data-action="increase-font"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19l5-13 5 13M5 14h6M19.5 6.5v5M17 9h5"/></svg></button>
-        <span>Aumentar letra</span>
+        <button type="button" data-action="increase-font"><span class="bola" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M5 14h6M19.5 6.5v5M17 9h5"/></svg></span>Aumentar letra</button>
       </div>
       <div class="accessibility-item">
-        <button type="button" aria-label="Modo escuro" data-action="toggle-theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg></button>
-        <span id="theme-description">Ativar modo escuro</span>
+        <button type="button" data-action="toggle-theme"><span class="bola" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg></span><span id="theme-description">Ativar modo escuro</span></button>
       </div>
       <div class="accessibility-item">
-        <button type="button" class="libras-option" data-action="open-libras" aria-label="Abrir tradu&#231;&#227;o em Libras"><svg viewBox="0 0 32 26" aria-hidden="true"><path d="M4 16V9a1.3 1.3 0 0 1 2.6 0v4V6a1.3 1.3 0 0 1 2.6 0v7V7.5a1.3 1.3 0 0 1 2.6 0V13V10a1.3 1.3 0 0 1 2.6 0v7a5 5 0 0 1-5 5h-.6a5 5 0 0 1-4.3-2.5l-1.2-2A1.3 1.3 0 0 1 4 16z"/><path d="M4 16V9a1.3 1.3 0 0 1 2.6 0v4V6a1.3 1.3 0 0 1 2.6 0v7V7.5a1.3 1.3 0 0 1 2.6 0V13V10a1.3 1.3 0 0 1 2.6 0v7a5 5 0 0 1-5 5h-.6a5 5 0 0 1-4.3-2.5l-1.2-2A1.3 1.3 0 0 1 4 16z" transform="translate(32 0) scale(-1 1)"/></svg></button>
-        <span>Traduzir para Libras</span>
+        <button type="button" class="libras-option" data-action="open-libras"><span class="bola" aria-hidden="true"><svg viewBox="0 0 32 26"><path d="M4 16V9a1.3 1.3 0 0 1 2.6 0v4V6a1.3 1.3 0 0 1 2.6 0v7V7.5a1.3 1.3 0 0 1 2.6 0V13V10a1.3 1.3 0 0 1 2.6 0v7a5 5 0 0 1-5 5h-.6a5 5 0 0 1-4.3-2.5l-1.2-2A1.3 1.3 0 0 1 4 16z"/><path d="M4 16V9a1.3 1.3 0 0 1 2.6 0v4V6a1.3 1.3 0 0 1 2.6 0v7V7.5a1.3 1.3 0 0 1 2.6 0V13V10a1.3 1.3 0 0 1 2.6 0v7a5 5 0 0 1-5 5h-.6a5 5 0 0 1-4.3-2.5l-1.2-2A1.3 1.3 0 0 1 4 16z" transform="translate(32 0) scale(-1 1)"/></svg></span>Traduzir para Libras</button>
       </div>
     </div>
-    <button type="button" class="accessibility-toggle" data-action="toggle-accessibility" aria-label="Abrir opções de acessibilidade" aria-expanded="false" aria-controls="accessibility-options">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7" r="1"/><path d="M5 10h14M12 10v9m0-5-4 5m4-5 4 5"/></svg>
+    <button type="button" class="accessibility-toggle" data-action="toggle-accessibility" aria-expanded="false" aria-controls="accessibility-options">
+      <span class="bola" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7" r="1"/><path d="M5 10h14M12 10v9m0-5-4 5m4-5 4 5"/></svg></span>
+      Acessibilidade
     </button>
   </div>
     <div vw-access-button class="active" style="display: none !important;"></div>
-    <div vw-plugin-wrapper>
+    <div vw-plugin-wrapper aria-hidden="true">
     <div class="vw-plugin-top-wrapper"></div>
   </div>
   </div>
