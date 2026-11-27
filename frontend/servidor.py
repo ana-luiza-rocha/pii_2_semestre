@@ -1,7 +1,7 @@
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import urllib.request
 
-API = "https://guiafacilmaua.onrender.com"
+API = "http://127.0.0.1:8000"
 CAMINHOS = ("/services", "/support", "/steps/", "/chatbot/")
 
 

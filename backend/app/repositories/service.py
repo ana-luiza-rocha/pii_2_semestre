@@ -4,15 +4,22 @@ from app.repositories.collections import service
 atende_mais = {
     "code": "atende+",
     "name": "Atende+",
-    "description": "Agendamentos e serviços",
+    "description": "Criar conta, obter ficha médica e marcar viagem",
     "initial_step": "AM_1"
 }
 
 meu_inss = {
     "code": "meu-inss",
     "name": "Meu INSS",
-    "description": "Consultas e solicitações",
+    "description": "Criar conta",
     "initial_step": "MI_01"
+}
+
+cadunico = {
+    "code": "cadunico",
+    "name": "CadÚnico",
+    "description": "Criar conta e baixar aplicativo",
+    "initial_step": "CU_01"
 }
 
 feedback = {
@@ -21,15 +28,28 @@ feedback = {
     "initial_step": "FB_01"
 }
 
-for documento in [atende_mais, meu_inss, feedback]:
+for documento in [atende_mais, meu_inss, cadunico, feedback]:
     service.update_one(
         {"code": documento["code"]},
         {"$set": documento},
         upsert=True,
     )
 
+def ordenar_servicos(itens):
+    ordem = ["atende+", "meu-inss", "cadunico"]
+    lista = []
+    for code in ordem:
+        for item in itens:
+            if item["code"] == code:
+                lista.append(item)
+    return lista
+
 def find_available_services():
-    return db.service.find({"code": { "$ne": "feedback"}},{"_id": 0,"name": 1}).sort("code", 1)
+    itens = list(db.service.find(
+        {"code": {"$ne": "feedback"}},
+        {"_id": 0, "code": 1, "name": 1}
+    ))
+    return ordenar_servicos(itens)
 
 
 def find_support_title():
@@ -37,4 +57,8 @@ def find_support_title():
 
 
 def find_services_descriptions():
-    return db.service.find({"code": {"$ne": "feedback"}}, {"_id": 0, "description": 1}).sort("code", 1)
+    itens = list(db.service.find(
+        {"code": {"$ne": "feedback"}},
+        {"_id": 0, "code": 1, "description": 1}
+    ))
+    return ordenar_servicos(itens)
