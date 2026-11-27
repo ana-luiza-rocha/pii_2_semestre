@@ -287,8 +287,9 @@ h1 {
   margin-bottom: 0;
   padding: 20px 18px;
   border-radius: 24px;
-  background: white;
-  box-shadow: 0 6px 14px rgba(21, 101, 192, 0.15);
+  background: #90caf9;
+  box-shadow: 0 6px 14px rgba(21, 101, 192, 0.2);
+  color: #0d2b45;
 }
 
 main.tela:has(> .info) {
@@ -308,33 +309,20 @@ main.tela:has(> .info) {
 .info .icone {
   width: 48px;
   height: 48px;
-  background: #e3f2fd;
+  background: white;
 }
 
 .info h2 {
   margin: 0 0 8px;
-  color: #1565c0;
+  color: #0d2b45;
   font-size: 1.15em;
+  font-weight: bold;
 }
 
 .info p {
   margin: 0;
   font-size: 0.95em;
   line-height: 1.55;
-}
-
-.info.aviso {
-  border: 2px solid #f5dc8e;
-  background: #fff4cc;
-  box-shadow: none;
-}
-
-.info.aviso .icone {
-  background: white;
-}
-
-.info.aviso h2 {
-  color: #0d2b45;
 }
 
 @media (max-width: 380px) {
@@ -376,8 +364,12 @@ main.tela:has(> .info) {
   }
 
   main.tela:has(> .info) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
+  }
+
+  main.tela:has(> .info) > .info.aviso {
+    grid-column: 1 / -1;
   }
 
   main.tela:has(> .info) > :not(.info) {

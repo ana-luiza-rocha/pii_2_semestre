@@ -98,26 +98,6 @@ body {
   flex-shrink: 0;
 }
 
-[data-theme="dark"] .accessibility-widget button {
-  border-color: #a9d4ff;
-  background: #1c2c40;
-  color: #edf4ff;
-}
-
-[data-theme="dark"] .accessibility-widget .accessibility-toggle {
-  background: #1565c0;
-  color: white;
-}
-
-[data-theme="dark"] [vw] .accessibility-options {
-  border-color: #547392;
-  background: #1c2c40;
-}
-
-[data-theme="dark"] [vw] .accessibility-item > span {
-  color: #edf4ff;
-}
-
 @media (max-width: 480px) {
   [vw] .accessibility-widget {
     right: max(12px, env(safe-area-inset-right));
@@ -151,110 +131,124 @@ body {
 }
 
 [data-theme="dark"] body {
-  background: #101b29;
-  color: #edf4ff;
-}
-
-[data-theme="dark"] .topo {
-  background: #163d68;
-}
-
-[data-theme="dark"] .topo .sobre,
-[data-theme="dark"] .topo .sobre:visited {
-  border-color: #a9d4ff;
-  color: #edf4ff;
-}
-
-[data-theme="dark"] .topo .sobre:hover {
-  background: #a9d4ff;
-  color: #0d2b45;
-}
-
-[data-theme="dark"] h1 {
+  background: #03060d;
   color: #ffffff;
 }
 
+[data-theme="dark"] h1,
 [data-theme="dark"] .etiqueta,
-[data-theme="dark"] .sugestoes {
-  color: #a9d4ff;
-}
-
+[data-theme="dark"] .sugestoes,
 [data-theme="dark"] .subtitulo,
 [data-theme="dark"] .contador,
-[data-theme="dark"] .modal p {
-  color: #c1d3e5;
+[data-theme="dark"] .modal p,
+[data-theme="dark"] .info h2,
+[data-theme="dark"] .descricao,
+[data-theme="dark"] .topo .sobre,
+[data-theme="dark"] .topo .sobre:visited,
+[data-theme="dark"] .accessibility-item > span,
+[data-theme="dark"] .caixa-texto::placeholder {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .topo,
+[data-theme="dark"] .botao.secundario,
+[data-theme="dark"] .caixa-texto,
+[data-theme="dark"] .modal-caixa {
+  background: #276496;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .topo .sobre,
+[data-theme="dark"] .topo .sobre:visited,
+[data-theme="dark"] .botao,
+[data-theme="dark"] .botao.secundario,
+[data-theme="dark"] .caixa-texto,
+[data-theme="dark"] .sugestoes {
+  border-color: #d5e4f2;
+}
+
+[data-theme="dark"] .accessibility-widget button {
+  background: #276496;
+  border-color: #1f6eab;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .topo .sobre:hover {
+  background: #d5e4f2;
+  color: #03060d;
 }
 
 [data-theme="dark"] .cartao,
-[data-theme="dark"] .balao {
-  background: #3C84CC;
-  color: #edf4ff;
+[data-theme="dark"] .balao,
+[data-theme="dark"] .info,
+[data-theme="dark"] .botao {
+  background: #1f6eab;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .cartao,
+[data-theme="dark"] .balao,
+[data-theme="dark"] .info {
+  box-shadow: none;
 }
 
 [data-theme="dark"] .cartao:hover,
 [data-theme="dark"] .cartao:active,
 [data-theme="dark"] .sugestoes:hover {
-  background: #315f8e;
-  color: #fff;
+  background: #082848;
+  color: #ffffff;
 }
 
-[data-theme="dark"] .opcao,
-[data-theme="dark"] .botao {
-  background: #423b26;
-  color: #fff3cf;
-  border-color: #cfb568;
+[data-theme="dark"] .opcao {
+  background: #8a6500;
+  color: #ffffff;
+  border-color: #e6c15a;
 }
 
-[data-theme="dark"] .botao.secundario,
-[data-theme="dark"] .caixa-texto,
-[data-theme="dark"] .modal-caixa {
-  background: #1c2c40;
-  color: #edf4ff;
-}
-
-[data-theme="dark"] .caixa-texto,
-[data-theme="dark"] .botao.secundario,
-[data-theme="dark"] .sugestoes {
-  border-color: #a9d4ff;
-}
-
-[data-theme="dark"] .caixa-texto::placeholder {
-  color: #c1d3e5;
+[data-theme="dark"] #chatbot button.opcao:hover:not(:disabled) {
+  background: #705200;
+  border-color: #e6c15a;
 }
 
 [data-theme="dark"] .seta,
-[data-theme="dark"] .sugestoes svg {
-  stroke: #a9d4ff;
+[data-theme="dark"] .sugestoes svg,
+[data-theme="dark"] .icone svg {
+  stroke: #d5e4f2;
 }
 
 [data-theme="dark"] :focus-visible {
-  outline-color: #ffd375;
-}
-
-[data-theme="dark"] .info {
-  background: #1c2c40;
-}
-
-[data-theme="dark"] .info h2 {
-  color: #a9d4ff;
+  outline-color: #d5e4f2;
 }
 
 [data-theme="dark"] .info.aviso {
-  border-color: #cfb568;
-  background: #423b26;
+  border: 2px solid #e6d0a2;
+  background: #735c3e;
+  color: #ffffff;
 }
 
-[data-theme="dark"] .info.aviso h2 {
-  color: #fff3cf;
+[data-theme="dark"] .info.aviso .icone {
+  background: #e6d0a2;
+}
+
+[data-theme="dark"] .info.aviso .icone svg {
+  stroke: #2a2116;
 }
 
 [data-theme="dark"] .icone {
-  background: #101b29;
+  background: #03060d;
 }
 
-[data-theme="dark"] .icone svg {
-  stroke: #a9d4ff;
+[data-theme="dark"] .accessibility-widget .accessibility-toggle {
+  border-color: #d5e4f2;
+  background: #0c4a7c !important;
+  color: #ffffff !important;
 }
-[data-theme="dark"] .descricao {
-  color: #c1d3e5;
+
+[data-theme="dark"] .accessibility-widget .accessibility-toggle:hover {
+  background: #082848 !important;
+}
+
+[data-theme="dark"] .accessibility-options {
+  border-color: #1f6eab;
+  background: #000000;
 }
