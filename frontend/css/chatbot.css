@@ -39,8 +39,10 @@
 
 #chatbot button.opcao {
   width: 100%;
+  max-width: 100%;
   font: inherit;
   text-align: left;
+  white-space: normal;
   cursor: pointer;
 }
 

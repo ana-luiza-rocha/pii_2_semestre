@@ -172,7 +172,7 @@ async function loadStep(code, goingBack = false) {
     showStep();
     status.textContent = "";
   } catch (error) {
-    status.textContent = "Não conseguimos carregar a conversa... Tente atualizar a página daqui 15 segundos." // "Não foi possível carregar a conversa. Confira a API e os dados do banco.";
+    status.textContent = "Não conseguimos carregar a conversa... Tente atualizar a página daqui 15 segundos."
     retry.hidden = false;
     retry.onclick = function () {
       loadStep(code, goingBack);
