@@ -8,6 +8,10 @@
   align-items: flex-start;
 }
 
+#chatbot-message:focus {
+  outline: none;
+}
+
 #chatbot-message .balao {
   width: fit-content;
   max-width: 100%;

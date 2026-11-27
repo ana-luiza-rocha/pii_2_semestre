@@ -174,7 +174,6 @@ body {
 
 [data-theme="dark"] h1,
 [data-theme="dark"] .etiqueta,
-[data-theme="dark"] .sugestoes,
 [data-theme="dark"] .subtitulo,
 [data-theme="dark"] .contador,
 [data-theme="dark"] .modal p,
@@ -195,12 +194,19 @@ body {
   color: #ffffff;
 }
 
+[data-theme="dark"] .modal-icone {
+  background: #03060d;
+}
+
+[data-theme="dark"] .modal-icone svg {
+  stroke: #d5e4f2;
+}
+
 [data-theme="dark"] .topo .sobre,
 [data-theme="dark"] .topo .sobre:visited,
 [data-theme="dark"] .botao,
 [data-theme="dark"] .botao.secundario,
-[data-theme="dark"] .caixa-texto,
-[data-theme="dark"] .sugestoes {
+[data-theme="dark"] .caixa-texto {
   border-color: #d5e4f2;
 }
 
@@ -235,8 +241,7 @@ body {
 }
 
 [data-theme="dark"] .cartao:hover,
-[data-theme="dark"] .cartao:active,
-[data-theme="dark"] .sugestoes:hover {
+[data-theme="dark"] .cartao:active {
   background: #082848;
   color: #ffffff;
 }
@@ -253,7 +258,6 @@ body {
 }
 
 [data-theme="dark"] .seta,
-[data-theme="dark"] .sugestoes svg,
 [data-theme="dark"] .icone svg {
   stroke: #d5e4f2;
 }
@@ -262,17 +266,20 @@ body {
   outline-color: #d5e4f2;
 }
 
-[data-theme="dark"] .info.aviso {
+[data-theme="dark"] .info.aviso,
+[data-theme="dark"] .balao.aviso {
   border: 2px solid #e6d0a2;
   background: #735c3e;
   color: #ffffff;
 }
 
-[data-theme="dark"] .info.aviso .icone {
+[data-theme="dark"] .info.aviso .icone,
+[data-theme="dark"] .balao.aviso .icone {
   background: #e6d0a2;
 }
 
-[data-theme="dark"] .info.aviso .icone svg {
+[data-theme="dark"] .info.aviso .icone svg,
+[data-theme="dark"] .balao.aviso .icone svg {
   stroke: #2a2116;
 }
 

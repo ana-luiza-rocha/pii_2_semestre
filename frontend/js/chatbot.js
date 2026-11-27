@@ -66,10 +66,35 @@ function showStep() {
     : null);
   const stepLink = currentStep.link || null;
   message.replaceChildren();
+  const tipos = {
+    FB_ES_01: "Sua sugestão",
+    FB_FR_01: "Sua reclamação",
+    FB_EE_01: "Seu elogio"
+  };
+  const rotulo = document.querySelector("label[for='chatbot-comment']");
+  if (rotulo) {
+    rotulo.textContent = tipos[currentStep.code] || "Sua mensagem";
+  }
+  if (currentStep.input_type === "comment") {
+    const aviso = document.createElement("div");
+    aviso.className = "balao aviso";
+    const icone = document.createElement("span");
+    icone.className = "icone";
+    icone.setAttribute("aria-hidden", "true");
+    icone.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.01"/></svg>';
+    const texto = document.createElement("span");
+    texto.textContent = "Sua mensagem vai para a equipe do Guia Fácil. Não há resposta na hora.";
+    aviso.append(icone, texto);
+    message.appendChild(aviso);
+  }
   for (const text of currentStep.messages || [currentStep.message]) {
+    let frase = text;
+    if (frase === "Conte para a gente o que você acha que pode melhorar no Guia Fácil") {
+      frase = frase + ".";
+    }
     const bubble = document.createElement("div");
     bubble.className = "balao";
-    bubble.textContent = text;
+    bubble.textContent = frase;
     message.appendChild(bubble);
   }
   if (stepLink) {
@@ -240,7 +265,56 @@ function startConversation() {
   loadStep(firstSteps[service] || firstSteps[chat.dataset.service]);
 }
 
-form.onsubmit = sendAnswer;
+const confirmacao = document.getElementById("confirmacao");
+
+function abrirConfirmacao() {
+  const perguntas = {
+    FB_ES_01: "Deseja enviar esta sugestão?",
+    FB_FR_01: "Deseja enviar esta reclamação?",
+    FB_EE_01: "Deseja enviar este elogio?"
+  };
+  document.getElementById("confirmacao-titulo").textContent = perguntas[currentStep.code];
+  document.getElementById("icone-sugestao").hidden = currentStep.code !== "FB_ES_01";
+  document.getElementById("icone-reclamacao").hidden = currentStep.code !== "FB_FR_01";
+  document.getElementById("icone-elogio").hidden = currentStep.code !== "FB_EE_01";
+  confirmacao.classList.add("aberto");
+  document.getElementById("confirmar-voltar").focus();
+}
+
+function fecharConfirmacao() {
+  confirmacao.classList.remove("aberto");
+  comment.focus();
+}
+
+function pedirEnvio(event) {
+  event.preventDefault();
+  if (loading || !form.reportValidity() || !sendTarget) return;
+  if (currentStep.input_type === "score" && !selectedScore) {
+    status.textContent = "Escolha uma nota de 1 a 5 estrelas.";
+    scoreStars.querySelector("button")?.focus();
+    return;
+  }
+  if (currentStep.input_type === "comment" && confirmacao) {
+    abrirConfirmacao();
+    return;
+  }
+  sendAnswer(event);
+}
+
+if (confirmacao) {
+  document.getElementById("confirmar-voltar").onclick = fecharConfirmacao;
+  document.getElementById("confirmar-enviar").onclick = function () {
+    confirmacao.classList.remove("aberto");
+    sendAnswer({ preventDefault: function () {} });
+  };
+  confirmacao.onclick = function (event) {
+    if (event.target === confirmacao) {
+      fecharConfirmacao();
+    }
+  };
+}
+
+form.onsubmit = pedirEnvio;
 comment.oninput = updateCounter;
 scoreStars?.addEventListener("click", function (event) {
   const button = event.target.closest("button[data-score]");
