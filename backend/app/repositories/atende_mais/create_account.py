@@ -40,33 +40,7 @@ create_account_steps = [
         "service_name": "Atende+",
         "message": "Ótimo! Abaixo, você encontrará um vídeo com o passo a passo para criar sua conta no site do Atende+.",
         "video_path": "videos/Criar_conta_atende_mais.mp4",
-        "next step": "AM_CC_03"
-
-    },
-
-    {
-
-        "code": "AM_CC_03",
-        "service_name": "Atende+",
-        "message": "Precisa de ajuda com mais alguma coisa?",
-        "options": [
-
-            {
-                "text": "Sim",
-                "next step": "AM_CC_10"
-            }, 
-
-            {
-                "text": "Não",
-                "next step": "AM_CC_04"
-            },
-
-            {
-                "text": "Voltar à pergunta anterior",
-            },
-
-
-        ]
+        "next step": "AM_CC_04"
 
     },
 
@@ -106,7 +80,7 @@ create_account_steps = [
 
             {
                 "text": "Não, obrigado",
-                "next step": "AM_CC_03"
+                "next step": "AM_CC_04"
             }, 
 
             {
@@ -174,32 +148,6 @@ create_account_steps = [
 
         ]
 
-    },
-
-    {
-
-        "code": "AM_CC_10",
-        "service_name": "Atende+",
-        "message": "Com qual serviço você gostaria de ajuda?",
-        "options": [
-
-            {
-                "text": "Atende+",
-                "next step": "AM_1"
-            }, 
-
-            {
-                "text": "Meu INSS",
-                "next step": "MI_01"
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            },
-
-
-        ]
-
     }
 
 ]
@@ -210,3 +158,5 @@ for documento in create_account_steps:
         {"$set": documento},
         upsert=True,
     )
+
+step.delete_many({"code": {"$in": ["AM_CC_03", "AM_CC_10"]}})
