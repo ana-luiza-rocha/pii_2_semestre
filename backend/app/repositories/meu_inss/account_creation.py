@@ -69,7 +69,7 @@ account_creation_steps = [
 
             {
                 "text": "Não, obrigado",
-                "next step": "MI_CC_05"
+                "next step": "MI_CC_06"
             },
 
             {
@@ -98,32 +98,6 @@ account_creation_steps = [
                 "text": "Consultar um benefício",
                 "next step": "" #o fluxo de benefício não existe ainda!
             }, 
-
-
-        ]
-
-    },
-
-    {
-
-        "code": "MI_CC_05",
-        "service_name": "Meu INSS",
-        "message": "Precisa de ajuda com mais alguma coisa?",
-        "options": [
-
-            {
-                "text": "Sim",
-                "next step": "MI_CC_15"
-            }, 
-
-            {
-                "text": "Não",
-                "next step": "MI_CC_06"
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            },
 
 
         ]
@@ -292,32 +266,6 @@ account_creation_steps = [
 
         ]
 
-    },
-
-    {
-
-        "code": "MI_CC_15",
-        "service_name": "Meu INSS",
-        "message": "Com qual serviço você gostaria de ajuda?",
-        "options": [
-
-            {
-                "text": "Atende+",
-                "next step": "AM_1"
-            }, 
-
-            {
-                "text": "Meu INSS",
-                "next step": "MI_01"
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            },
-
-
-        ]
-
     }
 
 ]
@@ -328,3 +276,5 @@ for documento in account_creation_steps:
         documento,
         upsert=True,
     )
+
+step.delete_many({"code": {"$in": ["MI_CC_05", "MI_CC_15"]}})

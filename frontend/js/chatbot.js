@@ -189,6 +189,25 @@ async function loadStep(code, goingBack = false) {
       step = { ...nextStep, messages: [step.message, nextStep.message] };
     }
 
+    if (step.message === "Precisa de ajuda com mais alguma coisa?") {
+      let destino = "";
+      for (const option of step.options || []) {
+        if (option.text === "Não") {
+          destino = option["next step"];
+        }
+      }
+      if (destino) {
+        const resposta = await fetch(`${BASE_URL}/steps/${destino}`);
+        const seguinte = await resposta.json();
+        if (!resposta.ok) throw new Error("Etapa não encontrada.");
+        step = seguinte;
+      }
+    }
+
+    if (step.message === "Espero ter ajudado! Se precisar novamente, estarei por aqui! Até a próxima!") {
+      step.message = "Espero ter ajudado! Se precisar novamente, estarei por aqui. Até a próxima!";
+    }
+
     if (goingBack) {
       stepHistory.pop();
     } else {

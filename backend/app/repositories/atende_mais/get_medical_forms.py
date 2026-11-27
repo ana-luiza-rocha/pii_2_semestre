@@ -9,33 +9,7 @@ get_medical_forms_steps = [
         "service_name": "Atende+",
         "message": "Abaixo, você encontrará um vídeo com o passo a passo para obter a sua ficha médica no site do Atende+.",
         "video_path": "videos/Obter_ficha_medica_atende_mais.mp4",
-        "next step": "AM_OFM_02"
-
-    },
-
-    {
-
-        "code": "AM_OFM_02",
-        "service_name": "Atende+",
-        "message": "Precisa de ajuda com mais alguma coisa?",
-        "options": [
-
-            {
-                "text": "Sim",
-                "next step": "AM_OFM_7"
-            }, 
-
-            {
-                "text": "Não",
-                "next step": "AM_OFM_03"
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            },
-
-
-        ]
+        "next step": "AM_OFM_03"
 
     },
 
@@ -43,7 +17,7 @@ get_medical_forms_steps = [
 
         "code": "AM_OFM_03",
         "service_name": "Atende+",
-        "message": "Espero ter ajudado! Se precisar novamente, estarei por aqui! Até a próxima!",
+        "message": "Espero ter ajudado! Se precisar novamente, estarei por aqui. Até a próxima!",
         "options": [
 
             {
@@ -104,32 +78,6 @@ get_medical_forms_steps = [
                 "text": "Voltar para a página inicial",
                 "next step": "MENU"
             }, 
-
-
-        ]
-
-    },
-
-    {
-
-        "code": "AM_OFM_7",
-        "service_name": "Atende+",
-        "message": "Com qual serviço você gostaria de ajuda?",
-        "options": [
-
-            {
-                "text": "Atende+",
-                "next step": "AM_1"
-            }, 
-
-            {
-                "text": "Meu INSS",
-                "next step": "MI_01"
-            }, 
-
-            {
-                "text": "Voltar à pergunta anterior",
-            },
 
 
         ]
