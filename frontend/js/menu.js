@@ -53,7 +53,6 @@ async function carregarMenu() {
 
     document.getElementById("nome-atende").textContent = servicos[0];
     document.getElementById("nome-inss").textContent = servicos[1];
-    document.getElementById("nome-suporte").textContent = suporte[0];
     document.getElementById("descricao-atende").textContent = descricoes[0];
     document.getElementById("descricao-inss").textContent = descricoes[1];
     carregado = true;
@@ -62,7 +61,6 @@ async function carregarMenu() {
     console.error(erro);
     document.getElementById("nome-atende").textContent = "Nome indisponível";
     document.getElementById("nome-inss").textContent = "Nome indisponível";
-    document.getElementById("nome-suporte").textContent = "Nome indisponível";
     document.getElementById("descricao-atende").textContent = "Descrição indisponível";
     document.getElementById("descricao-inss").textContent = "Descrição indisponível";
     document.getElementById("erro-menu").textContent =

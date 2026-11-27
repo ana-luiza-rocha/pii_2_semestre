@@ -56,6 +56,39 @@ body {
   color: #1565c0;
 }
 
+.menu-topo {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 767px) {
+  .topo {
+    padding: 12px 12px;
+  }
+
+  .topo .container-fluid {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .topo strong {
+    font-size: 1.2em;
+  }
+
+  .menu-topo {
+    flex: none;
+  }
+
+  .menu-topo .sobre {
+    flex: none;
+    white-space: nowrap;
+    padding: 6px 10px;
+  }
+}
+
 .botoes {
   display: flex;
   flex-wrap: nowrap;

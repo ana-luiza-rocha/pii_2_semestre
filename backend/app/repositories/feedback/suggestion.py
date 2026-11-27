@@ -7,7 +7,7 @@ suggestion_steps = [
 
         "code": "FB_ES_01",
         "service_name": "Feedback",
-        "message": "Conte para a gente o que você acha que pode melhorar no Guia Fácil",
+        "message": "Conte para a gente o que você acha que pode melhorar no Guia Fácil.",
         "options": [
 
 
