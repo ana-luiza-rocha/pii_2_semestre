@@ -59,6 +59,16 @@
   border-color: #1565c0;
 }
 
+#chatbot-aviso {
+  width: fit-content;
+  max-width: 100%;
+}
+
+#chatbot-score-aviso {
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
 #chatbot-form label {
   display: block;
   margin: 12px 0;
@@ -67,32 +77,62 @@
 #chatbot-score-stars {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 4px;
+  justify-content: space-between;
+  gap: 12px;
   margin: 8px 0 24px;
+  padding: 16px 20px;
+  border: 2px solid #f5dc8e;
+  border-radius: 18px;
+  background: #fff4cc;
+  color: #0d2b45;
 }
 
 #chatbot-score-stars button {
   border: 0;
   background: transparent;
-  color: #b7791f;
+  color: #8a6500;
   font: inherit;
-  font-size: 2em;
+  font-size: 1.7em;
   line-height: 1;
-  padding: 2px;
+  padding: 0 1px;
   cursor: pointer;
 }
 
+#chatbot-score-stars:focus-within {
+  border-color: #1565c0;
+}
+
 #chatbot-score-stars button:hover,
+#chatbot-score-stars button:focus,
 #chatbot-score-stars button:focus-visible {
-  color: #8a5700;
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+  color: #705200;
+  outline: none;
 }
 
 #chatbot-score-value {
-  margin-left: 8px;
-  font-size: 1em;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+[data-theme="dark"] #chatbot-score-stars {
+  background: #8a6500;
+  border-color: #e6c15a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] #chatbot-score-stars button {
+  color: #fff4cc;
+}
+
+[data-theme="dark"] #chatbot-score-stars:focus-within {
+  border-color: #d5e4f2;
+}
+
+[data-theme="dark"] #chatbot-score-stars button:hover,
+[data-theme="dark"] #chatbot-score-stars button:focus,
+[data-theme="dark"] #chatbot-score-stars button:focus-visible {
+  color: #ffffff;
+  outline: none;
 }
 
 #chatbot-status,

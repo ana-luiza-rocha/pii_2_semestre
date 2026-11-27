@@ -210,6 +210,12 @@ body {
   border-color: #d5e4f2;
 }
 
+[data-theme="dark"] .caixa-texto:focus,
+[data-theme="dark"] .caixa-texto:focus-visible {
+  outline: none;
+  border-color: #d5e4f2;
+}
+
 [data-theme="dark"] .accessibility-widget button {
   background: transparent;
   color: #ffffff;
@@ -242,8 +248,8 @@ body {
 
 [data-theme="dark"] .cartao:hover,
 [data-theme="dark"] .cartao:active {
-  background: #082848;
-  color: #ffffff;
+  background: #1f6eab;
+  border-color: #d5e4f2;
 }
 
 [data-theme="dark"] .opcao {
@@ -275,12 +281,15 @@ body {
 
 [data-theme="dark"] .info.aviso .icone,
 [data-theme="dark"] .balao.aviso .icone {
-  background: #e6d0a2;
+  background: white;
 }
 
-[data-theme="dark"] .info.aviso .icone svg,
-[data-theme="dark"] .balao.aviso .icone svg {
-  stroke: #2a2116;
+[data-theme="dark"] .info.aviso .forma,
+[data-theme="dark"] .balao.aviso .forma,
+[data-theme="dark"] .info.aviso .marca,
+[data-theme="dark"] .balao.aviso .marca {
+  fill: none;
+  stroke: #8a6500;
 }
 
 [data-theme="dark"] .icone {

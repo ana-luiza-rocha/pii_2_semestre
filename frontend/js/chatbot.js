@@ -4,6 +4,7 @@ const options = document.getElementById("chatbot-options");
 const form = document.getElementById("chatbot-form");
 const comment = document.getElementById("chatbot-comment");
 const scoreStars = document.getElementById("chatbot-score-stars");
+const scoreAviso = document.getElementById("chatbot-score-aviso");
 const scoreValue = document.getElementById("chatbot-score-value");
 const status = document.getElementById("chatbot-status");
 const retry = document.getElementById("chatbot-retry");
@@ -55,9 +56,11 @@ function updateStarRating() {
     button.querySelector("span").textContent = selectedScore && value <= rating ? "★" : "☆";
     button.setAttribute("aria-pressed", String(value === rating && Boolean(selectedScore)));
   }
-  scoreValue.textContent = selectedScore
-    ? `Nota: ${selectedScore}/5`
-    : "Escolha de 1 a 5 estrelas";
+  if (selectedScore) {
+    scoreValue.textContent = rating * 20 + "%";
+  } else {
+    scoreValue.textContent = "0%";
+  }
 }
 
 function showStep() {
@@ -66,26 +69,18 @@ function showStep() {
     : null);
   const stepLink = currentStep.link || null;
   message.replaceChildren();
-  const tipos = {
-    FB_ES_01: "Sua sugestão",
-    FB_FR_01: "Sua reclamação",
-    FB_EE_01: "Seu elogio"
-  };
-  const rotulo = document.querySelector("label[for='chatbot-comment']");
-  if (rotulo) {
-    rotulo.textContent = tipos[currentStep.code] || "Sua mensagem";
-  }
-  if (currentStep.input_type === "comment") {
-    const aviso = document.createElement("div");
-    aviso.className = "balao aviso";
-    const icone = document.createElement("span");
-    icone.className = "icone";
-    icone.setAttribute("aria-hidden", "true");
-    icone.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.01"/></svg>';
-    const texto = document.createElement("span");
-    texto.textContent = "Sua mensagem vai para a equipe do Guia Fácil. Não há resposta na hora.";
-    aviso.append(icone, texto);
-    message.appendChild(aviso);
+  document.getElementById("chatbot-aviso").hidden = currentStep.input_type !== "comment";
+  const rotulo = document.getElementById("rotulo-comentario");
+  if (currentStep.input_type === "score") {
+    rotulo.textContent = "Seu comentário";
+  } else if (currentStep.code === "FB_ES_01") {
+    rotulo.textContent = "Sua sugestão";
+  } else if (currentStep.code === "FB_FR_01") {
+    rotulo.textContent = "Sua reclamação";
+  } else if (currentStep.code === "FB_EE_01") {
+    rotulo.textContent = "Seu elogio";
+  } else {
+    rotulo.textContent = "Sua mensagem";
   }
   for (const text of currentStep.messages || [currentStep.message]) {
     let frase = text;
@@ -118,9 +113,11 @@ function showStep() {
   const isComment = currentStep.input_type === "comment";
   const isScore = currentStep.input_type === "score";
   form.hidden = !isComment && !isScore;
-  document.getElementById("comment-field").hidden = !isComment;
+  document.getElementById("comment-field").hidden = !isComment && !isScore;
   document.getElementById("score-field").hidden = !isScore;
-  comment.disabled = !isComment;
+  scoreAviso.textContent = "";
+  scoreAviso.hidden = true;
+  comment.disabled = !isComment && !isScore;
   comment.required = isComment;
 
   const draft = drafts[currentStep.code] || { comment: "", score: "" };
@@ -227,14 +224,8 @@ async function loadStep(code, goingBack = false) {
   }
 }
 
-async function sendAnswer(event) {
-  event.preventDefault();
+async function sendAnswer() {
   if (loading || !form.reportValidity() || !sendTarget) return;
-  if (currentStep.input_type === "score" && !selectedScore) {
-    status.textContent = "Escolha uma nota de 1 a 5 estrelas.";
-    scoreStars.querySelector("button")?.focus();
-    return;
-  }
 
   const answer = {
     submission_id: submissionId,
@@ -243,9 +234,10 @@ async function sendAnswer(event) {
     score: null,
     chat_history: stepHistory.slice(-200),
   };
-  if (currentStep.input_type === "comment") {
+  if (currentStep.input_type === "comment" || currentStep.input_type === "score") {
     answer.comment = comment.value;
-  } else {
+  }
+  if (currentStep.input_type === "score") {
     answer.score = Number(selectedScore);
   }
 
@@ -292,10 +284,18 @@ function abrirConfirmacao() {
     FB_FR_01: "Deseja enviar esta reclamação?",
     FB_EE_01: "Deseja enviar este elogio?"
   };
-  document.getElementById("confirmacao-titulo").textContent = perguntas[currentStep.code];
+  const avaliacao = currentStep.input_type === "score";
+  if (avaliacao) {
+    document.getElementById("confirmacao-titulo").textContent = "Deseja enviar esta avaliação?";
+    document.getElementById("confirmacao-texto").textContent = "Você poderá voltar e alterar a avaliação antes de enviar.";
+  } else {
+    document.getElementById("confirmacao-titulo").textContent = perguntas[currentStep.code];
+    document.getElementById("confirmacao-texto").textContent = "Você poderá voltar e alterar o texto antes de enviar.";
+  }
   document.getElementById("icone-sugestao").hidden = currentStep.code !== "FB_ES_01";
   document.getElementById("icone-reclamacao").hidden = currentStep.code !== "FB_FR_01";
   document.getElementById("icone-elogio").hidden = currentStep.code !== "FB_EE_01";
+  document.getElementById("icone-avaliacao").hidden = !avaliacao;
   confirmacao.classList.add("aberto");
   document.getElementById("confirmar-voltar").focus();
 }
@@ -309,22 +309,23 @@ function pedirEnvio(event) {
   event.preventDefault();
   if (loading || !form.reportValidity() || !sendTarget) return;
   if (currentStep.input_type === "score" && !selectedScore) {
-    status.textContent = "Escolha uma nota de 1 a 5 estrelas.";
-    scoreStars.querySelector("button")?.focus();
+    status.textContent = "";
+    scoreAviso.textContent = "Escolha uma nota de 1 a 5 estrelas.";
+    scoreAviso.hidden = false;
     return;
   }
-  if (currentStep.input_type === "comment" && confirmacao) {
+  if ((currentStep.input_type === "comment" || currentStep.input_type === "score") && confirmacao) {
     abrirConfirmacao();
     return;
   }
-  sendAnswer(event);
+  sendAnswer();
 }
 
 if (confirmacao) {
   document.getElementById("confirmar-voltar").onclick = fecharConfirmacao;
   document.getElementById("confirmar-enviar").onclick = function () {
     confirmacao.classList.remove("aberto");
-    sendAnswer({ preventDefault: function () {} });
+    sendAnswer();
   };
   confirmacao.onclick = function (event) {
     if (event.target === confirmacao) {
@@ -335,12 +336,16 @@ if (confirmacao) {
 
 form.onsubmit = pedirEnvio;
 comment.oninput = updateCounter;
-scoreStars?.addEventListener("click", function (event) {
-  const button = event.target.closest("button[data-score]");
-  if (!button || loading) return;
-  selectedScore = button.dataset.score;
-  updateStarRating();
-  updateCounter();
-  status.textContent = "";
-});
+const botoesNota = document.querySelectorAll("#chatbot-score-stars button");
+for (const botao of botoesNota) {
+  botao.onclick = function () {
+    if (loading) return;
+    selectedScore = botao.dataset.score;
+    updateStarRating();
+    updateCounter();
+    status.textContent = "";
+    scoreAviso.textContent = "";
+    scoreAviso.hidden = true;
+  };
+}
 startConversation();
