@@ -59,7 +59,7 @@ function desenhoDaOpcao(text) {
   if (frase.indexOf("benefício") !== -1 || frase.indexOf("consultar") !== -1) {
     return "M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM16.5 16.5 21 21";
   }
-  if (frase.indexOf("android") !== -1 || frase.indexOf("apple") !== -1) {
+  if (frase.indexOf("motorola") !== -1 || frase.indexOf("samsung") !== -1 || frase.indexOf("iphone") !== -1) {
     return "M8 3.5h8a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1zM11 18.5h2";
   }
   if (frase.indexOf("continuar") !== -1 || frase.indexOf("enviar") !== -1) {

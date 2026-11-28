@@ -38,7 +38,7 @@ account_creation_steps = [
 
             {
                 "text": "Sim, já entrei",
-                "next step": "MI_CC_03"
+                "next step": "MI_CC_20"
             }, 
 
             {
@@ -49,55 +49,6 @@ account_creation_steps = [
             {
                 "text": "Voltar à pergunta anterior",
             },
-
-
-        ]
-
-    },
-
-    {
-
-        "code": "MI_CC_03",
-        "service_name": "Meu INSS",
-        "message": "Precisa de ajuda com algum serviço do Meu INSS?",
-        "options": [
-
-            {
-                "text": "Sim, preciso de ajuda",
-                "next step": "MI_CC_04"
-            }, 
-
-            {
-                "text": "Não, obrigado",
-                "next step": "MI_CC_06"
-            },
-
-            {
-                "text": "Voltar à pergunta anterior",
-            },
-
-
-
-        ]
-
-    },
-
-    {
-
-        "code": "MI_CC_04",
-        "service_name": "Meu INSS",
-        "message": "Com o que você precisa de ajuda no Meu INSS?",
-        "options": [
-
-            {
-                "text": "Criar uma conta",
-                "next step": "MI_CC_01"
-            }, 
-
-            {
-                "text": "Consultar um benefício",
-                "next step": "" #o fluxo de benefício não existe ainda!
-            }, 
 
 
         ]
@@ -140,7 +91,7 @@ account_creation_steps = [
 
             {
                 "text": "Não, consigo entrar",
-                "next step": "MI_CC_03"
+                "next step": "MI_CC_20"
             }, 
 
             {
@@ -158,7 +109,7 @@ account_creation_steps = [
         "service_name": "Meu INSS",
         "message": "Ótimo! No vídeo, você verá passo a passo como entrar na sua conta Gov.br pelo aplicativo.",
         "video_path": "videos/Criar_conta_gov.mp4",
-        "next step": "MI_CC_03"
+        "next step": "MI_CC_20"
 
     },
 
@@ -170,12 +121,17 @@ account_creation_steps = [
         "options": [
 
             {
-                "text": "Android",
+                "text": "Motorola",
                 "next step": "MI_CC_10"
             }, 
 
             {
-                "text": "Apple",
+                "text": "Samsung",
+                "next step": "MI_CC_16"
+            }, 
+
+            {
+                "text": "iPhone",
                 "next step": "MI_CC_11"
             }, 
 
@@ -192,7 +148,29 @@ account_creation_steps = [
 
         "code": "MI_CC_10",
         "service_name": "Meu INSS",
-        "message": "Certo! Abaixo, você encontrará um vídeo com o passo a passo para baixar o aplicativo Meu INSS em dispositivos Android.",
+        "message": "Certo! Abaixo, você encontrará um vídeo com o passo a passo para baixar o aplicativo Meu INSS no Motorola.",
+        "video_path": "videos/Baixar_meu_inss_android.mp4",
+        "options": [
+
+            {
+                "text": "Continuar",
+                "next step": "MI_CC_07"
+            }, 
+
+            {
+                "text": "Voltar à pergunta anterior",
+            }, 
+
+
+        ]
+
+    },
+
+    {
+
+        "code": "MI_CC_16",
+        "service_name": "Meu INSS",
+        "message": "Certo! Abaixo, você encontrará um vídeo com o passo a passo para baixar o aplicativo Meu INSS no Samsung.",
         "video_path": "videos/Baixar_meu_inss_android.mp4",
         "options": [
 
@@ -214,8 +192,19 @@ account_creation_steps = [
 
         "code": "MI_CC_11",
         "service_name": "Meu INSS",
-        "message": "Certo! Abaixo, você encontrará um vídeo com o passo a passo para baixar o aplicativo Meu INSS em dispositivos Apple.",
+        "message": "Certo! Abaixo, você encontrará um vídeo com o passo a passo para baixar o aplicativo Meu INSS no iPhone.",
+        "video_path": "videos/Baixar_meu_inss_apple.mp4",
         "next step": "MI_CC_07"
+
+    },
+
+    {
+
+        "code": "MI_CC_20",
+        "service_name": "Meu INSS",
+        "message": "Certo! Abaixo, você encontrará um vídeo com o passo a passo para entrar na sua conta do Meu INSS.",
+        "video_path": "videos/Entrar_conta_meu_inss.mp4",
+        "next step": "MI_CC_06"
 
     },
 
@@ -277,4 +266,4 @@ for documento in account_creation_steps:
         upsert=True,
     )
 
-step.delete_many({"code": {"$in": ["MI_CC_05", "MI_CC_15"]}})
+step.delete_many({"code": {"$in": ["MI_CC_03", "MI_CC_04", "MI_CC_05", "MI_CC_15", "MI_CC_19"]}})
