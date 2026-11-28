@@ -5,7 +5,7 @@ meu_inss_options = {
 
     "code": "MI_01",
     "service_name": "Meu INSS",
-    "message": "Olá! O que você deseja fazer no Meu INSS hoje?",
+    "message": "O que você necessita em relação a plataforma “Meu INSS”?",
     "options": [
 
         {
