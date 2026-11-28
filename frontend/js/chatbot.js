@@ -82,7 +82,7 @@ function montarOpcao(button, text) {
   const texto = document.createElement("span");
   texto.className = "texto";
   texto.textContent = text;
-  if (text.toLowerCase().indexOf("pergunta anterior") !== -1) {
+  if (text.toLowerCase().indexOf("pergunta anterior") !== -1 || text.toLowerCase().indexOf("continuar") !== -1 || text.toLowerCase() === "enviar") {
     button.replaceChildren(icone, texto);
     return;
   }
@@ -338,6 +338,7 @@ function startConversation() {
   const firstSteps = {
     atende: "AM_1",
     "meu-inss": "MI_01",
+    cadunico: "CU_01",
     feedback: "FB_01",
     menu: "FB_01",
     sugestao: "FB_ES_01",

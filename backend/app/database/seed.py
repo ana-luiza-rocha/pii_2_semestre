@@ -26,6 +26,9 @@ if __name__ == "__main__":
 
         print("05/10")
         import app.repositories.meu_inss.account_creation
+        import app.repositories.cadunico.options
+        import app.repositories.cadunico.criar_conta
+        import app.repositories.cadunico.baixar_aplicativo
 
         print("06/10")
         import app.repositories.feedback.options

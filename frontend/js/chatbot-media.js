@@ -37,9 +37,7 @@ function showMedia(step) {
 
   const note = document.createElement("p");
   note.className = "chatbot-note";
-  if (!videoUrl && step.message.toLowerCase().includes("vídeo")) {
-    note.textContent = "O vídeo deste passo ainda não foi adicionado.";
-  } else if (!websiteUrl && !step.link && /clique no botão|toque no botão/i.test(step.message)) {
+  if (!websiteUrl && !step.link && /clique no botão|toque no botão/i.test(step.message)) {
     note.textContent = "O link deste passo ainda não foi adicionado.";
   }
   if (note.textContent) media.appendChild(note);

@@ -34,7 +34,7 @@ def find_step(code):
     if code in COMMENT_TYPES:
         result["input_type"] = "comment"
         result["feedback_type"] = COMMENT_TYPES[code]
-    elif code in ["AM_CC_07", "AM_OFM_04", "MI_CC_12"]:
+    elif code in ["AM_CC_07", "AM_OFM_04", "MI_CC_12", "CU_BA_06", "CU_CC_08"]:
         result["input_type"] = "score"
         result["feedback_type"] = "evaluation"
     return result
