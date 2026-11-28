@@ -19,6 +19,11 @@ atende_mais_options = {
         }, 
 
         {
+            "text": "Marcar viagem",
+            "next step": "AM_MV_01"
+        },
+
+        {
             "text": "Voltar para a página inicial",
             "next step": "MENU"
         }  

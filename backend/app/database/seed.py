@@ -19,6 +19,7 @@ if __name__ == "__main__":
 
         print("03/10")
         import app.repositories.atende_mais.get_medical_forms
+        import app.repositories.atende_mais.marcar_viagem
 
         print("04/10")
         import app.repositories.meu_inss.options
